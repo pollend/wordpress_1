@@ -10,6 +10,8 @@ var contentAreaWidth;
 var smallWindowMenu = false;
 var minimizer = true;
 
+var internal = false;
+
 
 function LoadContainer(url)
 {
@@ -20,24 +22,27 @@ function LoadContainer(url)
 	else
 	{
 
+		internal = true;
 		url = url.replace('#','&');
-		History.pushState({state:1}, "Loading...", url);
+		History.pushState(null, "Loading...", url);
 
 		if(url.indexOf("?") > -1)
 		{
-			url += "&empty=t"
+			url += "&empty=full_page"
 		}
 		else
 		{
-			url += "?empty=t"
+			url += "?empty=full_page"
 		}
 
 		jQuery( "#main" ).transition({opacity:0},200,function(){
 			jQuery( "#main" ).load(url,function(){
+
 				jQuery( "#main" ).transition({opacity:1},200);
 				document.title = jQuery( "#main" ).find("title").html();
-				OnLoadContent();
 
+				OnLoadContent();
+				PageScript();
 			});
 		});
 	}
@@ -47,7 +52,7 @@ function OnLoadContent()
 {
 	
 	jQuery("#main a").each(function(element){
-		jQuery(this).on("click",function(event)
+		jQuery(this).unbind('click').on("click",function(event)
 		{
 			if(jQuery(this).attr("href").indexOf(window.location.host) > -1)
 			{
@@ -56,7 +61,10 @@ function OnLoadContent()
 			}
 		});
 	});
+
+
 	UpdateImageViews();
+
 
 }
 
@@ -139,8 +147,19 @@ jQuery(document).ready(function () {
 	});
 
 	History.Adapter.bind(window,'statechange',function(){ 
-        var State = History.getState();
-        LoadContainer(State.url);
+		if(typeof pageEvent == 'function' && pageEvent() == true)
+		{
+    	}
+    	else
+    	{
+    		if(!internal)
+			{
+	        	var State = History.getState();
+	        	LoadContainer(State.url);
+	    	}
+    	}
+    	internal = false;
+    	
     });
     
     CheckForHeightChange();
@@ -162,11 +181,17 @@ function CheckForHeightChange()
 			smallWindowMenu = false;
 		}
 
-		jQuery("#page").height("auto");
-		var extraSpace = jQuery(document).height() - jQuery("#page").height();
+		//jQuery("#page").height("auto");
+		//var extraSpace = jQuery(document).height() - jQuery("#page").height();
 
-		if(extraSpace !== 0)
-		jQuery("#page").height(jQuery("#page").height() + extraSpace);
+		//if(extraSpace !== 0)
+		//jQuery("#page").height(jQuery("#page").height() + extraSpace);
+
+		//jQuery("#page").height(jQuery("#main").outerHeight());
+	//	if(jQuery("#main").outerHeight() <  jQuery(document).height())
+		//{
+		//		jQuery("#page").height(jQuery(document).height());
+		//}
 
 
 		contentAreaWidth = jQuery(".entry").width();
@@ -176,10 +201,13 @@ function CheckForHeightChange()
 			jQuery(this).width(contentAreaWidth);
 			jQuery(this).height(contentAreaWidth * jQuery(this).data('aspectRatio'));
 		});
+
 	}
 	mainAreaHeight = jQuery("#main").height();
-	setTimeout(CheckForHeightChange, 500);
+	setTimeout(CheckForHeightChange, 100);
 }
+
+
 
 
 

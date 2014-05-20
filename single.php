@@ -1,6 +1,12 @@
 
 <?php get_header(); ?>
 
+<?php if($_GET['empty'] == "comments"):?>
+	<div class="comment-container">
+		<?php comments_template(); ?>
+	</div>
+<?php else: ?>
+
 <div>
 	<div id="contentContainer">
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -46,8 +52,9 @@
 				<div id="page-numbering">
 				<?php wp_link_pages("Page before=<p>&after=</p>&next_or_number=number&pagelink= %"); ?>
 				</div>
-
-				<?php comments_template(); ?>
+				<div class="comment-container">
+					<?php comments_template(); ?>
+				</div>
 			</div>				
 
 		<?php endwhile; 
@@ -64,5 +71,4 @@
 	</div>
 </div>
 
-
-
+<?php endif; ?>
