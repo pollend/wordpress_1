@@ -1,5 +1,4 @@
 	<?php 
-	query_posts('page_id='. $_GET["page_id"] .'&paged=' . $_GET["paged"]  ); 
 	if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 		<?php $content = get_the_content();?>
@@ -40,6 +39,7 @@
 				<?php the_tags('Tags: ', ', ', '<br />'); ?>
 				Entries: <?php the_category(', ') ?> 
 			</div>
+			
 	
 		</div>
 	<?php endwhile; ?>

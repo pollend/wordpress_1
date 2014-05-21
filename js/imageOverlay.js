@@ -27,11 +27,11 @@ function UpdateImageViews()
 
 				var item = new Array();
 				item.push(jQuery(this).find("a").attr("href")); //push href onto item
-				jQuery(this).find("a").attr("href", "#");//reassign href to #
 				item.push(jQuery(this).find(".wp-caption-text").html());//push caption
 				gallery.push(item);
 
 				jQuery(this).find("a").unbind('click').on("click",{galleryID :(gallerygroup.length) , imageID : (gallery.length-1)},function(event){
+					event.preventDefault();
 					ImageOverlay(event.data.galleryID,event.data.imageID);
 					return false;
 				});
@@ -48,7 +48,6 @@ function UpdateImageViews()
 		var gallery = new Array();
 		var item = new Array();
 		item.push(jQuery(this).attr("href")); //push href onto item
-		jQuery(this).attr("href", "#");//reassign href to #
 		item.push(jQuery(this).parent().find(".wp-caption-text").html());//push caption
 		gallery.push(item);
 

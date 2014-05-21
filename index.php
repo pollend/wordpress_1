@@ -2,12 +2,16 @@
 
 <?php if($_GET['empty'] == "next_post"):?>
 
-	<?php  get_template_part( 'posts', 'index' ); ?>
+	<?php  
+	query_posts('page_id='. $_GET["page_id"] .'&paged=' . $_GET["paged"]  ); 
+	get_template_part( 'posts', 'index' ); ?>
 
 <?php else: ?>
 	<div id="blog-container">
 		<div id="contentContainer">
-		<?php  get_template_part( 'posts', 'index' ); ?>
+		<?php  
+query_posts('page_id='. $_GET["page_id"] .'&paged=' . $_GET["paged"]  ); 
+		get_template_part( 'posts', 'index' ); ?>
 		</div>
 
 		<div id="sidebarContainer">
@@ -23,7 +27,7 @@
 <div id="pageination-container">
 	<div class="navigator">
 
- 		<a href="<?php echo get_site_url() . "?paged=" .(get_query_var( 'paged' )-1). "&page_id=" . get_query_var( 'page_id' ) ?>"><</a>
+ 		<a class="arrow" href="<?php echo get_site_url() . "?paged=" .(get_query_var( 'paged' )-1). "&page_id=" . get_query_var( 'page_id' ) ?>"><</a>
 
 		<?php
 		for ($i =  get_query_var( 'paged' )-4; $i <= (get_query_var( 'paged' )+ 4); $i++) {
@@ -42,7 +46,7 @@
 			}
 
 
-			if($i >= 0  && $i < $wp_query->max_num_pages-1)
+			if($i >= 0  && $i < $wp_query->max_num_pages-1 && $i <  (get_query_var( 'paged' )+ 4) )
 			{
 				echo ",";
 			}
@@ -50,6 +54,6 @@
 		}
 		?>
 
-		<a href="<?php echo get_site_url() . "?paged=" .(get_query_var( 'paged' )+1). "&page_id=" . get_query_var( 'page_id' ) ?>">></a>
+		<a class="arrow" href="<?php echo get_site_url() . "?paged=" .(get_query_var( 'paged' )+1). "&page_id=" . get_query_var( 'page_id' ) ?>">></a>
 	</div>
 </div>

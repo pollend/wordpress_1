@@ -12,39 +12,47 @@ var minimizer = true;
 
 var internal = false;
 
+var isLoadingPage = false;
+
 
 function LoadContainer(url)
 {
-	if(url.indexOf(".jpg") > -1||url.indexOf(".png") > -1)
+	if(!isLoadingPage)
 	{
-		window.open(url, '_blank').focus();	
-	}
-	else
-	{
-
-		internal = true;
-		url = url.replace('#','&');
-		History.pushState(null, "Loading...", url);
-
-		if(url.indexOf("?") > -1)
+		isLoadingPage = true;
+		if(url.indexOf(".jpg") > -1||url.indexOf(".png") > -1)
 		{
-			url += "&empty=full_page"
+			window.open(url, '_blank').focus();	
 		}
 		else
 		{
-			url += "?empty=full_page"
-		}
 
-		jQuery( "#main" ).transition({opacity:0},200,function(){
-			jQuery( "#main" ).load(url,function(){
+			internal = true;
+			url = url.replace('#','&');
+			History.pushState(null, "Loading...", url);
 
-				jQuery( "#main" ).transition({opacity:1},200);
-				document.title = jQuery( "#main" ).find("title").html();
+			if(url.indexOf("?") > -1)
+			{
+				url += "&empty=full_page"
+			}
+			else
+			{
+				url += "?empty=full_page"
+			}
 
-				OnLoadContent();
-				PageScript();
+			jQuery( "#main" ).transition({opacity:0},200,function(){
+				jQuery( "#main" ).load(url,function(){
+
+					jQuery( "#main" ).transition({opacity:1},200);
+					document.title = jQuery( "#main" ).find("title").html();
+
+					OnLoadContent();
+					if(typeof PageScript == 'function')
+					PageScript();
+					isLoadingPage = false;
+				});
 			});
-		});
+		}
 	}
 }
 
@@ -146,9 +154,13 @@ jQuery(document).ready(function () {
 		return false;
 	});
 
+	jQuery(window).on("mousewheel", function() {
+    	jQuery("html, body").stop();
+	});
 	History.Adapter.bind(window,'statechange',function(){ 
 		if(typeof pageEvent == 'function' && pageEvent() == true)
 		{
+	
     	}
     	else
     	{
