@@ -1,6 +1,7 @@
 
 var isLoadingMorePost = false;
 var isSingleton = false;
+var oldScrollPosition = 0;
 
 function PageScript(){
 	OnLoadContent();
@@ -73,8 +74,9 @@ function PageScript(){
 					url += "?empty=comments"
 				}
 
-				jQuery('body,html').animate({scrollTop: 0}, 900);
+				oldScrollPosition = jQuery(document).scrollTop();
 
+				jQuery('body,html').animate({scrollTop: 0}, 900);
 				isSingleton = true;
 
 
@@ -159,7 +161,7 @@ function ListPost(){
 		}
 	});
 	PageScript();
- 	jQuery('body,html').animate({scrollTop: 0}, 900);
+ 	jQuery('body,html').animate({scrollTop: oldScrollPosition}, 900);
 
  	document.title = jQuery("#main").find("title").html();
 }

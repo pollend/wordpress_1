@@ -27,7 +27,7 @@ function LoadContainer(url)
 		else
 		{
 
-			internal = true;
+			//internal = true;
 			url = url.replace('#','&');
 			History.pushState(null, "Loading...", url);
 

@@ -35,7 +35,7 @@
 
 	 <?php else : // comments are closed ?>
 	 	<?php  if(!is_page()): ?>
-			<p>Comments are closed.</p>
+			<p class="closed-comments">Comments are closed.</p>
 		<?php endif; ?>
 
 	<?php endif; ?>

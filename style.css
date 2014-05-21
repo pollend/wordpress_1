@@ -412,7 +412,7 @@ margin: 10px;
 	#main{
 		padding: 20px 0px 50px 0px;
 		overflow: hidden;
-
+		height: 100%;
 	}
 	#blog-container{
 		overflow: hidden;
@@ -473,6 +473,11 @@ margin: 10px;
 		padding: 0px 10px;
 	}
 
+	.closed-comments{
+    padding: 15px;
+		
+	
+}
 	.menu{
 		margin: 0px;
 		height: 0px;
