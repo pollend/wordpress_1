@@ -2,8 +2,6 @@ var slides = new Array();
 var slideSelect = new Array();
 var currentPage = 1;
 
-var mainAreaHeight = 0;
-
 var allVideos = 0;
 var contentAreaWidth;
 
@@ -42,7 +40,6 @@ function LoadContainer(url)
 
 			jQuery( "#main" ).transition({opacity:0},200,function(){
 				jQuery( "#main" ).load(url,function(){
-
 					jQuery( "#main" ).transition({opacity:1},200);
 					document.title = jQuery( "#main" ).find("title").html();
 
@@ -50,6 +47,16 @@ function LoadContainer(url)
 					if(typeof PageScript == 'function')
 					PageScript();
 					isLoadingPage = false;
+
+					allVideos = jQuery("#contentContainer iframe[src^='http://www.youtube.com']");
+
+					allVideos.each(function(){
+						jQuery(this).data('aspectRatio',this.height/this.width);
+						jQuery(this).removeAttr('height').removeAttr('width');
+					});
+
+					jQuery(window).trigger( "resize" );
+
 				});
 			});
 		}
@@ -69,7 +76,6 @@ function OnLoadContent()
 			}
 		});
 	});
-
 
 	UpdateImageViews();
 
@@ -173,15 +179,8 @@ jQuery(document).ready(function () {
     	internal = false;
     	
     });
-    
-    CheckForHeightChange();
-});
 
-function CheckForHeightChange()
-{
-	if(jQuery("#main").height() !== mainAreaHeight)
-	{
-
+    jQuery( window ).resize(function() {
 		if(jQuery("#menu-drop-down").is(":visible") )
 		{
 			jQuery(".children").css("display","block");
@@ -193,20 +192,8 @@ function CheckForHeightChange()
 			smallWindowMenu = false;
 		}
 
-		//jQuery("#page").height("auto");
-		//var extraSpace = jQuery(document).height() - jQuery("#page").height();
-
-		//if(extraSpace !== 0)
-		//jQuery("#page").height(jQuery("#page").height() + extraSpace);
-
-		//jQuery("#page").height(jQuery("#main").outerHeight());
-	//	if(jQuery("#main").outerHeight() <  jQuery(document).height())
-		//{
-		//		jQuery("#page").height(jQuery(document).height());
-		//}
-
-
 		contentAreaWidth = jQuery(".entry").width();
+
 
 		if(allVideos !== 0 )
 		allVideos.each(function(){
@@ -214,25 +201,18 @@ function CheckForHeightChange()
 			jQuery(this).height(contentAreaWidth * jQuery(this).data('aspectRatio'));
 		});
 
-	}
-	mainAreaHeight = jQuery("#main").height();
-	setTimeout(CheckForHeightChange, 100);
-}
+    });
+    
+    LoadContainer(document.URL);
+});
 
 
 
 
 
 
-jQuery(window).load(function(){
-
-	allVideos = jQuery("#contentContainer iframe[src^='http://www.youtube.com']");
-
-	allVideos.each(function(){
-		jQuery(this).data('aspectRatio',this.height/this.width);
-		jQuery(this).removeAttr('height').removeAttr('width');
-	});
-	LoadContainer(document.URL);
+jQuery(window ).load(function(){
+	
 });
 
 

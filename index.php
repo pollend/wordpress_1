@@ -7,11 +7,12 @@
 	get_template_part( 'posts', 'index' ); ?>
 
 <?php else: ?>
+	<?php //get_template_part( 'Presentation', 'index' ); ?>
 	<div id="blog-container">
 		<div id="contentContainer">
-		<?php  
-query_posts('page_id='. $_GET["page_id"] .'&paged=' . $_GET["paged"]  ); 
-		get_template_part( 'posts', 'index' ); ?>
+		<?php 
+			query_posts('page_id='. $_GET["page_id"] .'&paged=' . $_GET["paged"]  ); 
+			get_template_part( 'posts', 'index' ); ?>
 		</div>
 
 		<div id="sidebarContainer">

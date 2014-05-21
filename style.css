@@ -899,8 +899,8 @@ a img.aligncenter {
 	}
 
 	#slide{
-		float: left;
-		width:60%;
+		/* float: left; */
+		/* width:60%; */
 		margin-bottom: 0px;
 	}
 	.threeSplit img{
