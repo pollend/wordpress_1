@@ -40,8 +40,7 @@ embed{
 	 background: #161616;
 	 color: #030303;
 	 overflow: hidden;
-
-	
+	 min-height:100%;
 	 position: absolute;
 	
 	 width: 80%;
@@ -445,6 +444,8 @@ margin: 10px;
 	#menu-container{
 
 		box-shadow: 0px 0px 20px #000;
+		
+
 		position: fixed;
 		-webkit-transform: translateZ(0); 
 
@@ -461,6 +462,8 @@ margin: 10px;
 		
 
 		background: #FFF;
+
+		-webkit-backface-visibility: hidden;
 
 }
 
@@ -654,7 +657,7 @@ margin: 10px;
 
 .postTitle{
 	font-size: 40px;
-	margin: 20px 0px 0px 27px;
+	margin: 20px 20px 20px 27px;
 
 
 }

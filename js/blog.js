@@ -40,10 +40,10 @@ function PageScript(){
 						});
 						jQuery(".navigator").html(jQuery(this).find(".navigator").html());
 						jQuery("#contentContainer").transition({opacity:1},900);
-
+						document.title = jQuery(this).find("title").html();
 						PageScript();
 					});
-					document.title = jQuery("#contentContainer title").html();
+					
 					isLoadingMorePost = false;
 				});
 			}
@@ -104,7 +104,11 @@ function PageScript(){
 					{
 						jQuery("<div>").load(url,function()
 						{
-							post.append(jQuery(this).find(".comment-container").wrap("<p>").parent().html());
+							post.find(".comment-container").empty();
+
+							post.find(".comment-container").append(jQuery(this).wrap("<p>").html());
+							post.find(".comment-container").attr("style","");
+
 							document.title = jQuery(this).find("title").html();
 							var orignalHeight = post.height();
 							post.css({height:"auto"});
@@ -141,12 +145,6 @@ function pageEvent(state){
 
 
 function ListPost(){
-
-	jQuery(".comment-container").height(jQuery(".comment-container").height());
-	jQuery(".comment-container").transition({height:0},900,function(){
-		jQuery(this).remove();
-	});
-
 	jQuery("#contentContainer>div").each(function(){
 		if(jQuery(this).css("display") === "none")
 		{
@@ -157,6 +155,15 @@ function ListPost(){
 			jQuery(this).height(0);
 			jQuery(this).transition({height:lheight,marginBottom:30},900,function(){
 				jQuery(this).removeAttr("style");
+			});
+		}
+		else
+		{
+				jQuery(this).find(".comment-container").height('auto');
+				var lheight = jQuery(this).find(".comment-container").height();
+				jQuery(this).find(".comment-container").height(lheight);
+				jQuery(this).find(".comment-container").transition({height:0},900,function(){
+				jQuery(this).find(".comment-container").css({display:"none"});
 			});
 		}
 	});

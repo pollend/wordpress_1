@@ -11,7 +11,8 @@
 	<div id="blog-container">
 		<div id="contentContainer">
 		<?php 
-			query_posts('page_id='. $_GET["page_id"] .'&paged=' . $_GET["paged"]  ); 
+
+			query_posts('page_id='. get_query_var( 'page_id' ) .'&paged=' .  get_query_var( 'paged' )  ); 
 			get_template_part( 'posts', 'index' ); ?>
 		</div>
 
@@ -28,18 +29,26 @@
 <div id="pageination-container">
 	<div class="navigator">
 
- 		<a class="arrow" href="<?php echo get_site_url() . "?paged=" .(get_query_var( 'paged' )-1). "&page_id=" . get_query_var( 'page_id' ) ?>"><</a>
+		<?php
+		$current_page = get_query_var( 'paged' );
+		if($current_page == 0)
+			$current_page = 1;
+
+		?>
+		<?php if( $current_page != 1):?>
+			<a class="arrow" href="<?php echo get_site_url() . "?paged=" .($current_page-1). "&page_id=" . get_query_var( 'page_id' ) ?>"><</a>
+		<?php endif; ?>
 
 		<?php
-		for ($i =  get_query_var( 'paged' )-4; $i <= (get_query_var( 'paged' )+ 4); $i++) {
+		for ($i = $current_page-4; $i <= ($current_page+ 4); $i++) {
 		   
-			if($i ==  get_query_var( 'paged' ))
+			if($i ==  ($current_page))
 			{
 				 ?>
 			   <a class="selected" href=""><?php echo $i; ?></a>
 			   <?php
 			}
-		   else if($i >= 0 && $i < $wp_query->max_num_pages)
+		   else if($i >= 1 && $i < $wp_query->max_num_pages)
 		   {
 			   ?>
 			   <a href="<?php echo get_site_url() . "?paged=" .$i. "&page_id=" . get_query_var( 'page_id' ) ?>"><?php echo $i; ?></a>
@@ -47,14 +56,15 @@
 			}
 
 
-			if($i >= 0  && $i < $wp_query->max_num_pages-1 && $i <  (get_query_var( 'paged' )+ 4) )
+			if($i >= 1  && $i < $wp_query->max_num_pages-1 && $i <  ($current_page+ 4) )
 			{
 				echo ",";
 			}
 
 		}
 		?>
-
-		<a class="arrow" href="<?php echo get_site_url() . "?paged=" .(get_query_var( 'paged' )+1). "&page_id=" . get_query_var( 'page_id' ) ?>">></a>
+		<?php if( $current_page != ($wp_query->max_num_pages-1)):?>
+			<a class="arrow" href="<?php echo get_site_url() . "?paged=" .($current_page+1). "&page_id=" . get_query_var( 'page_id' ) ?>">></a>
+		<?php endif; ?>
 	</div>
 </div>

@@ -16,7 +16,7 @@
 					<?php the_content(); ?>
 					
 				</div>
-	<?php comments_template(); ?>
+				<?php comments_template(); ?>
 			</div>
 			
 

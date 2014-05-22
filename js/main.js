@@ -2,9 +2,6 @@ var slides = new Array();
 var slideSelect = new Array();
 var currentPage = 1;
 
-var allVideos = 0;
-var contentAreaWidth;
-
 var smallWindowMenu = false;
 var minimizer = true;
 
@@ -41,21 +38,15 @@ function LoadContainer(url)
 			jQuery( "#main" ).transition({opacity:0},200,function(){
 				jQuery( "#main" ).load(url,function(){
 					jQuery( "#main" ).transition({opacity:1},200);
+
+					jQuery('body,html').animate({scrollTop: 0}, 900);
+
 					document.title = jQuery( "#main" ).find("title").html();
 
 					OnLoadContent();
 					if(typeof PageScript == 'function')
 					PageScript();
 					isLoadingPage = false;
-
-					allVideos = jQuery("#contentContainer iframe[src^='http://www.youtube.com']");
-
-					allVideos.each(function(){
-						jQuery(this).data('aspectRatio',this.height/this.width);
-						jQuery(this).removeAttr('height').removeAttr('width');
-					});
-
-					jQuery(window).trigger( "resize" );
 
 				});
 			});
@@ -65,6 +56,7 @@ function LoadContainer(url)
 
 function OnLoadContent()
 {
+
 	
 	jQuery("#main a").each(function(element){
 		jQuery(this).unbind('click').on("click",function(event)
@@ -79,6 +71,7 @@ function OnLoadContent()
 
 	UpdateImageViews();
 
+	jQuery(window).trigger('resize');
 
 }
 
@@ -160,8 +153,10 @@ jQuery(document).ready(function () {
 		return false;
 	});
 
-	jQuery(window).on("mousewheel", function() {
+	jQuery(window).on("mousedown DOMMouseScroll mousewheel keyup", function() {
     	jQuery("html, body").stop();
+    	//jQuery("#menu-container").css({top:jQuery(window).scrollTop(),position:"absolute"});
+		
 	});
 	History.Adapter.bind(window,'statechange',function(){ 
 		if(typeof pageEvent == 'function' && pageEvent() == true)
@@ -192,14 +187,16 @@ jQuery(document).ready(function () {
 			smallWindowMenu = false;
 		}
 
-		contentAreaWidth = jQuery(".entry").width();
 
 
-		if(allVideos !== 0 )
-		allVideos.each(function(){
-			jQuery(this).width(contentAreaWidth);
-			jQuery(this).height(contentAreaWidth * jQuery(this).data('aspectRatio'));
+
+
+		jQuery("#main iframe[src^='http://www.youtube.com'] , #main iframe[src^='//www.youtube.com']").each(function(){
+				jQuery(this).data('aspectRatio',this.height/this.width);
+				jQuery(this).width(jQuery(".entry").width());
+				jQuery(this).height(jQuery(".entry").width() * jQuery(this).data('aspectRatio'));
 		});
+
 
     });
     
@@ -212,7 +209,7 @@ jQuery(document).ready(function () {
 
 
 jQuery(window ).load(function(){
-	
+
 });
 
 

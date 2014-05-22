@@ -3,12 +3,10 @@
 
 <?php if($_GET['empty'] == "comments"):?>
 
-	<div class="comment-container">
-			<div id="page-numbering">
-				<?php wp_link_pages("Page before=<p>&after=</p>&next_or_number=number&pagelink= %"); ?>
-				</div>
-		<?php comments_template(); ?>
+	<div id="page-numbering">
+		<?php wp_link_pages("Page before=<p>&after=</p>&next_or_number=number&pagelink= %"); ?>
 	</div>
+	<?php comments_template(); ?>
 
 <?php else: ?>
 

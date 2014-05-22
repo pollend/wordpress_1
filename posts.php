@@ -40,6 +40,9 @@
 				Entries: <?php the_category(', ') ?> 
 			</div>
 			
+			<div class="comment-container">
+				
+			</div>
 	
 		</div>
 	<?php endwhile; ?>
