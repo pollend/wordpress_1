@@ -1,17 +1,25 @@
 
-var isLoadingMorePost = false;
 var isSingleton = false;
 var oldScrollPosition = 0;
 
 function PageScript(){
 	OnLoadContent();
-
+	
 	jQuery(".navigator a").each(function(){
+		if(jQuery(this).hasClass("selected"))
+		{
+			if(jQuery(this).html() === "1")
+			{
+				carousel_toggle_visible(true);
+			}
+			else
+			{
+				carousel_toggle_visible(false);
+			}
+		}
 		jQuery(this).unbind('click').on("click",function(){
 			event.preventDefault();
-			if(!isLoadingMorePost)
-			{
-				isLoadingMorePost = true;
+
 				var url =  jQuery(this).attr("href");
 
 				internal = true;
@@ -44,91 +52,80 @@ function PageScript(){
 						PageScript();
 					});
 					
-					isLoadingMorePost = false;
 				});
-			}
+			
 		});
 	});
 
 	jQuery("#contentContainer>div").each(function(){
 		jQuery(this).find(".postTitle a").unbind('click').on("click",function(){
 			event.preventDefault();
-			if(!isLoadingMorePost)
-			{
-				isLoadingMorePost = true;
 
-				var post_link = jQuery(this);
-				var post = jQuery(this).parent().parent();
-				var url = jQuery(this).attr("href");
 
-				internal = true;
-				History.pushState(null, "Loading...", url);
-
-				url = url.replace('#','&');
-				if(url.indexOf("?") > -1)
+				if(isSingleton)
 				{
-					url += "&empty=comments"
+					internal = true;
+					History.back();
 				}
 				else
 				{
-					url += "?empty=comments"
-				}
 
-				oldScrollPosition = jQuery(document).scrollTop();
+					var post_link = jQuery(this);
+					var post = jQuery(this).parent().parent();
+					var url = jQuery(this).attr("href");
 
-				jQuery('body,html').animate({scrollTop: 0}, 900);
-				isSingleton = true;
+					internal = true;
+					History.pushState(null, "Loading...", url);
 
-
-				jQuery("#contentContainer>.post").each(function(){
-					jQuery(this).height(jQuery(this).height());
-
-					if (jQuery(this).attr("id") !== post.attr("id")) {
-						jQuery(this).transition({height:0,marginBottom:0},900,function(){
-							jQuery(this).hide();
-							isLoadingMorePost = false;
-
-							//rebind for post link to be back button
-							jQuery(post_link).unbind("click").on("click",function(){
-								event.preventDefault();
-								ListPost();
-
-								internal = true;
-								History.back();
-
-							});
-
-						});
+					url = url.replace('#','&');
+					if(url.indexOf("?") > -1)
+					{
+						url += "&empty=comments"
 					}
 					else
 					{
-						jQuery("<div>").load(url,function()
+						url += "?empty=comments"
+					}
+					oldScrollPosition = jQuery(document).scrollTop();
+					jQuery('body,html').animate({scrollTop:  jQuery("#blog-container").offset().top}, 900);
+					isSingleton = true;
+
+
+					jQuery("#contentContainer>.post").each(function(){
+						jQuery(this).height(jQuery(this).height());
+						jQuery(this).data("height",jQuery(this).height());
+						if (jQuery(this).attr("id") !== post.attr("id")) {
+
+							jQuery(this).transition({height:0,marginBottom:0},900,function(){
+								jQuery(this).hide();
+							});
+						}
+						else
 						{
-							post.find(".comment-container").empty();
+							jQuery("<div>").load(url,function()
+							{
 
-							post.find(".comment-container").append(jQuery(this).wrap("<p>").html());
-							post.find(".comment-container").attr("style","");
+								post.find(".comment-container").empty();
 
-							document.title = jQuery(this).find("title").html();
-							var orignalHeight = post.height();
-							post.css({height:"auto"});
-							var newHeight = post.height();
-							post.css({height:orignalHeight});
+								post.find(".comment-container").append(jQuery(this).wrap("<p>").html());
+								post.find(".comment-container").attr("style","");
 
-							post.transition({height:newHeight},900,function(){
-								post.css({height:"auto"});
+								document.title = jQuery(this).find("title").html();
+			
+								post.transition({height:post.data("height") + post.find(".comment-container").height()},900,function(){
+									post.css({height:"auto"});
+
+								});
 
 							});
+						}
 
-						});
-					}
-
-				});
-			}
-
-
+					});
+				}
+			
 		});
 	});
+	carousel_init();
 }
 
 function pageEvent(state){
@@ -136,7 +133,6 @@ function pageEvent(state){
 
 	if(isSingleton)
 	{
-		isSingleton = false;
 		ListPost();
 		return true;
 	}
@@ -145,30 +141,28 @@ function pageEvent(state){
 
 
 function ListPost(){
+	isSingleton = false;
+	document.title = jQuery("#main").find("title").html();
 	jQuery("#contentContainer>div").each(function(){
 		if(jQuery(this).css("display") === "none")
 		{
 			jQuery(this).show();
-			jQuery(this).height('auto');
-
-			var lheight =  jQuery(this).height();
-			jQuery(this).height(0);
-			jQuery(this).transition({height:lheight,marginBottom:30},900,function(){
+			jQuery(this).transition({height:jQuery(this).data("height"),marginBottom:30},900,function(){
 				jQuery(this).removeAttr("style");
 			});
 		}
 		else
 		{
-				jQuery(this).find(".comment-container").height('auto');
-				var lheight = jQuery(this).find(".comment-container").height();
-				jQuery(this).find(".comment-container").height(lheight);
-				jQuery(this).find(".comment-container").transition({height:0},900,function(){
+			jQuery(this).height(jQuery(this).height());
+			jQuery(this).transition({height:jQuery(this).data("height"),marginBottom:30},900,function(){
+				jQuery(this).removeAttr("style");
 				jQuery(this).find(".comment-container").css({display:"none"});
 			});
 		}
 	});
-	PageScript();
+    var orig = jQuery(document).scrollTop();
+    window.scrollTo = orig;
+
  	jQuery('body,html').animate({scrollTop: oldScrollPosition}, 900);
 
- 	document.title = jQuery("#main").find("title").html();
 }

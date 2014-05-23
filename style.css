@@ -420,7 +420,8 @@ margin: 10px;
 		padding: 20px 20px 50px 30px;
 		-ms-word-wrap: break-word;
   		word-wrap: break-word;
-	
+		margin: 0px auto;
+		width: 90%;
 	}
 	#blog-container{
 		overflow: hidden;
@@ -836,6 +837,9 @@ a img.aligncenter {
 
 @media screen and (min-width:600px) {
 
+	#main{
+		width: 92%;
+	}
 	#page{
 		width: 80%;
 	}
@@ -926,6 +930,10 @@ a img.aligncenter {
 }
 
 @media screen and (min-width: 890px) {
+	#main{
+		width: 90%;
+	}
+
 	.menu>ul>li>a{
 		font-size: 20px;
 	}
@@ -941,6 +949,10 @@ a img.aligncenter {
 	}
 }
 @media screen and (min-width: 1080px) {
+	#main{
+		width: 82%;
+	}
+
 	.menu>ul>li>a{
 		font-size: 25px;
 	}

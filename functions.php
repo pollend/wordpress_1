@@ -186,8 +186,7 @@
     function gray_script_style()
     {
         //add javascript to pages with comment form
-        if ( is_singular() ) 
-            wp_enqueue_script( 'comment-reply' );
+        wp_enqueue_script( 'comment-reply' );
 
         //get debounce script to prevent user event spam
         wp_enqueue_script( "debounce", get_template_directory_uri()."/js/debounce.js",array("jquery"),'1.1');
@@ -204,8 +203,12 @@
         //register style sheet
         wp_enqueue_style( 'gray_style', get_stylesheet_uri(), array(), '1.0.0' );
 
-        //image overly style sheet
-        wp_enqueue_style( 'gray_imageOverlay', get_template_directory_uri() . "/imageOverlay.css", array(), '1.0.0' );
+        //register style sheet
+        wp_enqueue_style( 'gray_carousel_style',get_template_directory_uri() . "/presentation.css", array(), '1.0.0' );
+
+        //register style sheet
+        wp_enqueue_style( 'gray_imageoverlay_style', get_template_directory_uri() . "/imageOverlay.css", array(), '1.0.0' );
+
 
         //transit
          wp_enqueue_script( 'transit', get_template_directory_uri() . "/js/transit.js", array(), '1' );
@@ -255,6 +258,8 @@
          $content_width = 500;
     }
     add_action( 'after_setup_theme', 'gray_setup' );
+
+
 
     //add the admin options
     function gray_admin_menu()

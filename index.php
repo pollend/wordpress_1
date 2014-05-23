@@ -7,7 +7,7 @@
 	get_template_part( 'posts', 'index' ); ?>
 
 <?php else: ?>
-	<?php //get_template_part( 'Presentation', 'index' ); ?>
+	<?php get_template_part( 'Presentation', 'index' ); ?>
 	<div id="blog-container">
 		<div id="contentContainer">
 		<?php 
@@ -22,6 +22,8 @@
 	</div>
 
 <script type="text/javascript" src=" <?php echo bloginfo('template_directory') . "/js/blog.js?ver=1.0.0"; ?>"></script>
+<script type="text/javascript" src=" <?php echo bloginfo('template_directory') . "/js/carousel.js?ver=1.0.0"; ?>"></script>
+
 
 
 <?php endif; ?>
