@@ -11,6 +11,21 @@ function UpdateImageViews()
 {
 	gallerygroup = new Array();
 
+	jQuery("a[href$='.jpg'],a[href$='.png']").each(function(){
+
+		var gallery = new Array();
+		var item = new Array();
+		item.push(jQuery(this).attr("href")); //push href onto item
+		item.push(jQuery(this).parent().find(".wp-caption-text").html());//push caption
+		gallery.push(item);
+
+		jQuery(this).unbind('click').on("click",{galleryID :(gallerygroup.length) , imageID : (gallery.length-1)},function(event){
+			ImageOverlay(event.data.galleryID,event.data.imageID);
+			return false;
+		});
+
+		gallerygroup.push(gallery);
+	});
 
 	//looks for each gallery grouping
 	jQuery(".gallery").each(function(){
@@ -42,22 +57,6 @@ function UpdateImageViews()
 		gallerygroup.push(gallery);
 	});
 
-	
-	jQuery("a[href$='.jpg'],a[href$='.png']").each(function(){
-
-		var gallery = new Array();
-		var item = new Array();
-		item.push(jQuery(this).attr("href")); //push href onto item
-		item.push(jQuery(this).parent().find(".wp-caption-text").html());//push caption
-		gallery.push(item);
-
-		jQuery(this).unbind('click').on("click",{galleryID :(gallerygroup.length) , imageID : (gallery.length-1)},function(event){
-			ImageOverlay(event.data.galleryID,event.data.imageID);
-			return false;
-		});
-
-		gallerygroup.push(gallery);
-	});
 }
 
 jQuery(document).ready(function () {
