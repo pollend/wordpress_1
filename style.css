@@ -47,6 +47,14 @@ embed{
 	right: 0px;
 }
 
+#page{
+	width: 100%;
+}
+
+#menu-container{
+	left: 0%;
+}
+
 .full-width{
 	width: 100% !important;
 }
@@ -390,6 +398,7 @@ margin: 10px;
 }
 
 
+
 #title img{
 	width: 100%;
 	height: auto;
@@ -407,11 +416,11 @@ margin: 10px;
 /*HEADER-----------------------------------------------------------------------------------------------------------------------------------*/
 
 
-
 	#main{
-		padding: 20px 0px 50px 0px;
-		overflow: hidden;
-		height: 100%;
+		padding: 20px 20px 50px 30px;
+		-ms-word-wrap: break-word;
+  		word-wrap: break-word;
+	
 	}
 	#blog-container{
 		overflow: hidden;
@@ -442,30 +451,11 @@ margin: 10px;
 }
 
 	#menu-container{
-
-		box-shadow: 0px 0px 20px #000;
-		
-
-		position: fixed;
-		-webkit-transform: translateZ(0); 
-
-		left: 0px;
-		top: 0px;
-		
-
-		height: 100%;
 		z-index: 100;
-	
-		
-
-		width: 20%;
-		
-
 		background: #FFF;
-
 		-webkit-backface-visibility: hidden;
 
-}
+	}
 
 #comment-container{
 	overflow: hidden;
@@ -483,7 +473,6 @@ margin: 10px;
 }
 	.menu{
 		margin: 0px;
-		height: 0px;
 	}
 	.up #drop-down-icon{
 		background: url("images/MenuUp.png");
@@ -521,7 +510,9 @@ margin: 10px;
 		position: static;
 		display: none;
 
-	}
+	
+		list-style-type: none;
+}
 
 
 	.menu>ul>li>ul{
@@ -666,7 +657,6 @@ margin: 10px;
 	color: #71788F;
 
 	text-shadow: 2px 2px rgba(0, 0, 0, 0.09);
-	font-size: 60px;
 }
 .meta{
 	padding: 0px 10px 15px 30px;
@@ -844,10 +834,33 @@ a img.aligncenter {
 }
 
 
-
 @media screen and (min-width:600px) {
+
+	#page{
+		width: 80%;
+	}
+
+	.postTitle{
+	font-size: 60px;
+	}
+
+
 	#menu-container{
-		overflow: visible;
+		box-shadow: 0px 0px 20px #000;
+		
+
+		position: fixed;
+		-webkit-transform: translateZ(0); 
+
+		left: 0px;
+		top: 0px;
+
+		height: 100%;
+		z-index: 100;
+
+		width: 20%;
+		background: #FFF;
+		-webkit-backface-visibility: hidden;
 	}
 
 	.menu{
@@ -880,12 +893,7 @@ a img.aligncenter {
 		width: 32.4%;
 		display: inline-block;
 	}
-	#main{
-		padding: 20px 20px 50px 30px;
-		-ms-word-wrap: break-word;
-  		word-wrap: break-word;
-	
-}
+
 
 	.threeSplit {
 		padding: 20px 20px 20px 20px;

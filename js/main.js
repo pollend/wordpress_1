@@ -130,13 +130,9 @@ jQuery(document).ready(function () {
 		{
 			jQuery("#minimizer").html(">");
 			minimizer = false;
-			jQuery("#menu-container").transition({left:"-20%"},500,function(){
+			jQuery("#menu-container").transition({left:"-20%"},500,function(){});
 
-			});
-
-			jQuery("#page").transition({width:"100%"},500,function(){
-
-			});
+			jQuery("#page").transition({width:"100%"},500,function(){});
 		}
 		else
 		{
@@ -186,10 +182,13 @@ jQuery(document).ready(function () {
 			jQuery(".children").css("display","none");
 			smallWindowMenu = false;
 		}
-
-
-
-
+		if(jQuery(window).width() > 600)
+		{
+			jQuery("#minimizer").html("<");
+			minimizer = true;
+			jQuery("#page").attr("style","");
+			jQuery("#menu-container").attr("style","");
+		}
 
 		jQuery("#main iframe[src^='http://www.youtube.com'] , #main iframe[src^='//www.youtube.com']").each(function(){
 				jQuery(this).data('aspectRatio',this.height/this.width);
