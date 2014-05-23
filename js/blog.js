@@ -49,7 +49,10 @@ function PageScript(){
 						jQuery(".navigator").html(jQuery(this).find(".navigator").html());
 						jQuery("#contentContainer").transition({opacity:1},900);
 						document.title = jQuery(this).find("title").html();
-						PageScript();
+
+				
+					  ga('create', 'UA-51267322-1', 'smoketreestudios.com');
+					  ga('send', 'pageview');
 					});
 					
 				});
@@ -111,9 +114,12 @@ function PageScript(){
 								post.find(".comment-container").attr("style","");
 
 								document.title = jQuery(this).find("title").html();
-			
+
+								ga('create', 'UA-51267322-1', 'smoketreestudios.com');
+					  			ga('send', 'pageview');
+
 								post.transition({height:post.data("height") + post.find(".comment-container").height()},900,function(){
-									post.css({height:"auto"});
+								post.css({height:"auto"});
 
 								});
 

@@ -87,6 +87,4 @@
 
 	<title><?php wp_title('|'); ?></title>
 
-<?php endif;
-
- ?>
+<?php endif; ?>
