@@ -30,6 +30,7 @@ function carousel_toggle_visible(isvisible){
 	else
 	{
 		jQuery("#slidePresentation").show();
+		jQuery("#slidePresentation").height(0);
 		jQuery("#slidePresentation").transition({height:(jQuery("#slide").outerHeight()),marginBottom:20},900,function(){
 			jQuery("#slidePresentation").attr("style","");
 		});

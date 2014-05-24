@@ -20,7 +20,7 @@
 	</div>
 
 	<ol class="commentlist">
-		<?php wp_list_comments(array('avatar_size' => 70)); ?>
+		<?php wp_list_comments(array('avatar_size' => 70,'callback' => 'gray_comments_callback')); ?>
 	</ol>
 
 	<div class="navigation">

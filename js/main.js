@@ -178,12 +178,12 @@ jQuery(document).ready(function () {
     jQuery( window ).resize(function() {
 		if(jQuery("#menu-drop-down").is(":visible") )
 		{
-			jQuery(".children").css("display","block");
+			jQuery(".menu.children").css("display","block");
 			smallWindowMenu = true;
 		}
 		else
 		{
-			jQuery(".children").css("display","none");
+			jQuery(".menu.children").css("display","none");
 			smallWindowMenu = false;
 		}
 		

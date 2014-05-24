@@ -1,34 +1,5 @@
 <?php
 
-    //ouput header style and dump into page
-    function gray_header_style(){
-        ?>
-        <!--style type="text/css">
-            body{
-                <?php if(get_theme_mod("gray_cover_background_image")) : ?>
-                     background:url("<?php echo get_theme_mod('gray_cover_background_image'); ?>") center no-repeat fixed;
-                <?php else: ?>
-                    background: rgb(25,88,160); /* Old browsers */
-                    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMxOTU4YTAiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAxYTZiIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L3JhZGlhbEdyYWRpZW50PgogIDxyZWN0IHg9Ii01MCIgeT0iLTUwIiB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-                    background: url("<?php echo get_theme_mod('gray_pattern_repeat'); ?>") repeat top left,-moz-radial-gradient(center, ellipse cover,  <?php echo get_theme_mod('gray_gradient_one'); ?> 0%, <?php echo get_theme_mod('gray_gradient_two'); ?> 100%); /* FF3.6+ */
-                    background: url("<?php echo get_theme_mod('gray_pattern_repeat'); ?>") repeat top left,-webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,<?php echo get_theme_mod('gray_gradient_one'); ?>), color-stop(100%,<?php echo get_theme_mod('gray_gradient_two'); ?>)); /* Chrome,Safari4+ */
-                    background: url("<?php echo get_theme_mod('gray_pattern_repeat'); ?>") repeat top left,-webkit-radial-gradient(center, ellipse cover,  <?php echo get_theme_mod('gray_gradient_one'); ?> 0%,<?php echo get_theme_mod('gray_gradient_two'); ?> 100%); /* Chrome10+,Safari5.1+ */
-                    background: url("<?php echo get_theme_mod('gray_pattern_repeat'); ?>") repeat top left,-o-radial-gradient(center, ellipse cover, <?php echo get_theme_mod('gray_gradient_one'); ?> 0%,<?php echo get_theme_mod('gray_gradient_two'); ?> 100%); /* Opera 12+ */
-                    background: url("<?php echo get_theme_mod('gray_pattern_repeat'); ?>") repeat top left,-ms-radial-gradient(center, ellipse cover,  <?php echo get_theme_mod('gray_gradient_one'); ?> 0%,<?php echo get_theme_mod('gray_gradient_two'); ?> 100%); /* IE10+ */
-                    background: url("<?php echo get_theme_mod('gray_pattern_repeat'); ?>") repeat top left,radial-gradient(ellipse at center, <?php echo get_theme_mod('gray_gradient_one'); ?> 0%,<?php echo get_theme_mod('gray_gradient_two'); ?> 100%); /* W3C */
-                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1958a0', endColorstr='#001a6b',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
-                <?php endif; ?>
-            }
-
-            #title a{
-                color : #<?php echo get_theme_mod("header_textcolor") ; ?>;
-                text-decoration: none;
-            }
-        </style-->
-
-        <?php
-
-    }
 
     //places a home link on the page
     function gray_menu_args( $args ) {
@@ -52,135 +23,7 @@
     }
     add_filter( 'wp_title', 'gray_title', 10, 2 );
 
-    function gray_background_customizer()
-    {
-          /* Supply a list of built-in background that come with your theme */
-            $backgrounds = array(
-                'images/strip.png'
-            );
 
-            global  $wp_customize;
-            $control =  $wp_customize->get_control( 'gray_pattern_repeat' );
-
-            foreach ( (array) $backgrounds as $background )
-                $control->print_tab_image( esc_url_raw( get_stylesheet_directory_uri() . '/' . $background ) );
-    }
-
-    //setup the customizer
-    function gray_customizer($wp_customizer)
-    {
-        //full background image
-        $wp_customizer->add_section(
-            'gray_cover_background_image',
-            array(
-                'title' => 'cover background image',
-                'description' => 'full background image.',
-                'priority' => 35,
-            )
-        );
-
-        $wp_customizer->add_setting( 'gray_cover_background_image' ,  array( 'transport' => 'postMessage'));
-
-        $wp_customizer->add_control(
-        new WP_Customize_Image_Control(
-                $wp_customizer,
-                'gray_cover_background_image',
-                array(
-                    'label' => 'Image Upload',
-                    'section' => 'gray_cover_background_image',
-                    'settings' => 'gray_cover_background_image'
-                )
-            )
-        );
-
-        //background color and image
-        $wp_customizer->add_section(
-            'gray_pattern_background',
-            array(
-                'title' => 'Pattern Background',
-                'description' => 'background color and pattern.',
-                'priority' => 35,
-            )
-        );
-
-        $wp_customizer->add_setting('gray_pattern_repeat', array('transport' => 'postMessage') );
-         $wp_customizer->add_control(
-             new WP_Customize_Image_Control(
-                $wp_customizer,
-                'gray_pattern_repeat',
-                array(
-                    'label' => 'Image Upload',
-                    'section' => 'gray_pattern_background',
-                    'settings' => 'gray_pattern_repeat'
-                )
-            )
-        );
-
-        $control = $wp_customizer->get_control( 'gray_pattern_repeat' );
-
-        $control->add_tab( 'builtins', 'Built-ins',gray_background_customizer );
-
-
-        $wp_customizer->add_setting(
-        'gray_gradient_one',
-            array(
-                'default' => '#1958a0',
-                'transport' => 'postMessage'
-            )
-        );
-
-        $wp_customizer->add_control(new WP_Customize_Color_Control($wp_customizer, 'gray_gradient_one', array(
-            'section'    => 'gray_pattern_background',
-            'settings'   => 'gray_gradient_one',
-        )));
-
-        $wp_customizer->add_setting(
-        'gray_gradient_two',
-            array(
-                'default' => '#001a6b',
-                'transport' => 'postMessage'
-            )
-        );
-
-        $wp_customizer->add_control(new WP_Customize_Color_Control($wp_customizer, 'gray_gradient_two', array(
-        'section'    => 'gray_pattern_background',
-        'settings'   => 'gray_gradient_two',
-        )));
-
-         if ( $wp_customizer->is_preview() && ! is_admin() ) {
-            add_action( 'wp_footer', 'gray_customizer_preview', 21);
-        }
-
-        //send messages to post
-        $wp_customizer->get_setting( 'blogname' )->transport         = 'postMessage';
-        $wp_customizer->get_setting( 'blogdescription' )->transport  = 'postMessage';
-        $wp_customizer->get_setting( 'header_textcolor' )->transport = 'postMessage';
-    }
-    add_action( 'customize_register', 'gray_customizer' );
-    //create the varibles for the customizer preview
-    function gray_customizer_preview(){
-        ?>
-        <script type="text/javascript">
-            var color_one = "<?php echo  get_theme_mod('gray_gradient_one'); ?>";
-            var color_two= "<?php echo get_theme_mod('gray_gradient_two'); ?>";
-            var background_image= "<?php echo get_theme_mod('gray_pattern_repeat'); ?>" ;
-            var cover_background_image =  "<?php echo get_theme_mod('gray_cover_background_image'); ?>" ;
-        </script>
-        <?php
-    }
-
-    //customizer preview script
-    function gray_customizer_live_preview()
-    {
-        wp_enqueue_script( 
-              'mytheme-themecustomizer',            //Give the script an ID
-              get_template_directory_uri().'/js/preview.js',//Point to file
-              array( 'jquery','customize-preview' ),    //Define dependencies
-              '',                       //Define a version (optional) 
-              true                      //Put script in footer?
-        );
-    }
-    add_action( 'customize_preview_init', 'gray_customizer_live_preview' );
 
     //enqueue scripts
     function gray_script_style()
@@ -240,7 +83,7 @@
 
         ));
 
-        add_theme_support( 'custom-header', array('wp-head-callback'  => 'gray_header_style'));
+
 
         register_sidebar(array(
             'name' => 'Sidebar Widgets',
@@ -269,6 +112,31 @@
     }
     add_action('admin_menu','gray_admin_menu');
   
+    function gray_comments_callback( $comment, $args, $depth ) {
+
+    ?>
+    <li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
+        <div id="div-comment-<?php comment_ID(); ?>" class="comment-body">
+            <div class="main-comment-container">
+                <div class="comment-avatar">
+                   <?php echo get_avatar( $comment, 70 ); ?>
+                </div>
+                <div class="comment-content">
+                    <div class="comment-meta">
+                        <div  class="comment-username"><?php   comment_author(); ?></div>
+                        <div  class="comment-date"><?php comment_date('F j, Y \a\t g:i a'); ?></div>
+                    </div>
+                    <?php comment_text(); ?>
+                </div>
+     
+                <div class="reply">
+                    <?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( '<div>Reply</div>', 'gray' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+                </div>
+            </div>
+        </div>
+    </li>
+    <?php
+    }
 
 
 ?>

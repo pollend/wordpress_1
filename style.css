@@ -182,13 +182,13 @@ color:#939393;
 /*COMMENTS-------------------------------------------------------*/
 #submit{
 	padding: 10px;
-	/* background: #ffb76b; */ /* Old browsers */
+	background: #ffb76b; /* Old browsers */
 	background: -moz-linear-gradient(top,  #ffb76b 0%, #ffa73d 50%, #ff7c00 51%, #ff7f04 100%); /* FF3.6+ */
-	/* background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffb76b), color-stop(50%,#ffa73d), color-stop(51%,#ff7c00), color-stop(100%,#ff7f04)); */ /* Chrome,Safari4+ */
-	/* background: -webkit-linear-gradient(top,  #ffb76b 0%,#ffa73d 50%,#ff7c00 51%,#ff7f04 100%); */ /* Chrome10+,Safari5.1+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffb76b), color-stop(50%,#ffa73d), color-stop(51%,#ff7c00), color-stop(100%,#ff7f04)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #ffb76b 0%,#ffa73d 50%,#ff7c00 51%,#ff7f04 100%); /* Chrome10+,Safari5.1+ */
 	background: -o-linear-gradient(top,  #ffb76b 0%,#ffa73d 50%,#ff7c00 51%,#ff7f04 100%); /* Opera 11.10+ */
 	background: -ms-linear-gradient(top,  #ffb76b 0%,#ffa73d 50%,#ff7c00 51%,#ff7f04 100%); /* IE10+ */
-	/* background: linear-gradient(to bottom,  #ffb76b 0%,#ffa73d 50%,#ff7c00 51%,#ff7f04 100%); */ /* W3C */
+	background: linear-gradient(to bottom,  #ffb76b 0%,#ffa73d 50%,#ff7c00 51%,#ff7f04 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb76b', endColorstr='#ff7f04',GradientType=0 ); /* IE6-9 */
 	font-weight: bold;
 	font-size: 15px;
@@ -203,56 +203,55 @@ color:#939393;
 .comment-form .form-submit{
 	padding-left: 0px;
 }
+.commentlist .children{
+    background: rgba(2, 103, 255, 0.02);
+	
+    box-shadow: -1px -1px 0px #B9B9B9;
+    margin: 0px 0px 0px 9px;
+}
 
 .comment-body{
 	overflow: hidden;
 	position: relative;
 	border-width: 1px;
-	border-top-style: solid;
-	margin: 0px 0px 30px 4px;
-	padding: 20px 0px 10px 10px;
+	padding: 10px 0px 20px 5px;
+	/* background: #F5F5F7; */
 }
 ol.commentlist {
  list-style: none;
  padding-top: 5px;
-  }
+  
+ margin: 0px;
+ background: #F5F5F7;
+}
 ol.commentlist li {
- }
-ol.commentlist li.alt { }
-ol.commentlist li.bypostauthor { }
-ol.commentlist li.byuser { }
-ol.commentlist li.comment-author-admin { }
-ol.commentlist li.comment { }
-ol.commentlist li.comment div.comment-author { }
-ol.commentlist li.comment div.vcard {
-float: left;
- }
-ol.commentlist li.comment div.vcard cite.fn {
-	font-weight: normal;
-	display: block; 
-	text-align: left;
-	font-style: normal; 
-	padding-top: 5px;
-	font-size: 12px;
+ 
+}
 
+.comment-meta{
+	padding: 0px 0px 10px 0px;
+	font-size: 20px;
+	color: #FF4700;
 }
-ol.commentlist li.comment div.vcard cite.fn a.url { }
-ol.commentlist li.comment div.vcard img.avatar { display: block; }
-ol.commentlist li.comment div.vcard img.avatar-32 { }
-ol.commentlist li.comment div.vcard img.photo { }
-ol.commentlist li.comment div.vcard span.says { 
-display: none;
+
+.comment-avatar{
+	position: absolute;
+	top: 0px;
+	left:0px;
 }
+
+.comment-content{
+	padding-left: 90px;
+}
+
+.comment-username{
+	
+}
+
 ol.commentlist li.comment div.commentmetadata {
 padding-bottom: 10px;
  
 color: #A20000;
-}
-ol.commentlist li.comment div.comment-meta ,ol.commentlist li.comment p ,ol.commentlist li.comment div.reply{
-	display: block; 
-	font-size: 10px;
-	width:calc(100% - 130px); 
-	float: right;
 }
 ol.commentlist li.comment div.comment-meta a {
  color: #000;
@@ -265,10 +264,13 @@ color: #000000;
 width:calc(100% - 140px); 
 }
 ol.commentlist li.comment ul { }
-ol.commentlist li.comment div.reply ,ol.commentlist li.comment div.reply a{
+.reply div{
 font-size: 11px; 
-color: orange;
+color: #A9C1FF;
 text-decoration: none;
+background: #0958E5;
+padding: 2px;
+float: right;
 }
 
 ol.commentlist li.comment div.reply a ,ol.commentlist li.comment div.reply a:before{ 
@@ -301,7 +303,11 @@ ol.commentlist li.odd {}
 ol.commentlist li.parent { border-left: 0px solid #111; }
 ol.commentlist li.thread-alt { }
 ol.commentlist li.thread-even { }
-ol.commentlist li.thread-odd { }
+ol.commentlist li.thread-odd {
+ }
+.main-comment-container{
+    position: relative;
+}
 
 form { }
 input[type=text] { 
@@ -315,7 +321,7 @@ textarea { }
 #respond{
 	padding: 20px;
 	overflow: hidden;
-	background: rgba(186, 186, 189, 0.47);
+	background: #D6D6D6;
 	position: relative;
 }
 
@@ -502,8 +508,8 @@ margin: 10px;
 	.menu .children li{
 
 		box-shadow: 0px 0px;
-}
-	.children{
+	}
+	.menu.children{
 		left: 100%;
 		top: 0%;
 		background: none;
@@ -834,8 +840,23 @@ a img.aligncenter {
     color:  #242323;
 }
 
+ .comment-avatar img{
+	 	width: 20px;
+	 	height:20px;
+	}
+	.comment-content{
+		padding-left: 40px;
+	}
+
 
 @media screen and (min-width:600px) {
+	.comment-content{
+		padding-left: 90px;
+	}
+	 .comment-avatar img{
+	 	width: 70px;
+	 	height:70px;
+	 }
 
 	#main{
 		width: 92%;
@@ -874,7 +895,7 @@ a img.aligncenter {
 	.menu li{
 		display: block;
 	}
-	.children{
+	.menu.children{
 		position: absolute;
 		background: #ECECEC;
 	}
