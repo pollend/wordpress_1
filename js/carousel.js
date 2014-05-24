@@ -13,17 +13,24 @@ function carousel_back_page () {
 function carousel_toggle_visible(isvisible){
 	if(!isvisible)
 	{
-		isAutoOn = false;
-		jQuery("#slidePresentation").height(jQuery("#slidePresentation").height());
-		jQuery("#slidePresentation").data("height", jQuery("#slidePresentation").height());
-		jQuery("#slidePresentation").transition({height:0,marginBottom:0},900,function(){
-			jQuery(this).hide();
-		});
+		if(!isLoaded)
+		{
+			jQuery("#slidePresentation").hide();
+		}
+		else
+		{
+			isAutoOn = false;
+			jQuery("#slidePresentation").height(jQuery("#slidePresentation").height());
+		
+			jQuery("#slidePresentation").transition({height:0,marginBottom:0},900,function(){
+				jQuery(this).hide();
+			});
+		}
 	}
 	else
 	{
 		jQuery("#slidePresentation").show();
-		jQuery("#slidePresentation").transition({height:(jQuery("#slidePresentation").data("height")),marginBottom:20},900,function(){
+		jQuery("#slidePresentation").transition({height:(jQuery("#slide").outerHeight()),marginBottom:20},900,function(){
 			jQuery("#slidePresentation").attr("style","");
 		});
 	}

@@ -6,6 +6,7 @@ function PageScript(){
 	OnLoadContent();
 	
 	jQuery(".navigator a").each(function(){
+
 		if(jQuery(this).hasClass("selected"))
 		{
 			if(jQuery(this).html() === "1")
@@ -17,6 +18,7 @@ function PageScript(){
 				carousel_toggle_visible(false);
 			}
 		}
+
 		jQuery(this).unbind('click').on("click",function(){
 			event.preventDefault();
 
@@ -50,7 +52,7 @@ function PageScript(){
 						jQuery("#contentContainer").transition({opacity:1},900);
 						document.title = jQuery(this).find("title").html();
 
-				
+						PageScript();
 					  ga('create', 'UA-51267322-1', 'smoketreestudios.com');
 					  ga('send', 'pageview');
 					});
@@ -59,7 +61,7 @@ function PageScript(){
 			
 		});
 	});
-
+	
 	jQuery("#contentContainer>div").each(function(){
 		jQuery(this).find(".postTitle a").unbind('click').on("click",function(){
 			event.preventDefault();
