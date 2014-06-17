@@ -288,25 +288,22 @@ ol.commentlist li.comment ul.children {
 ol.commentlist li.comment ul.children li {
 
  }
-ol.commentlist li.comment ul.children li.alt { }
-ol.commentlist li.comment ul.children li.bypostauthor { }
-ol.commentlist li.comment ul.children li.byuser { }
-ol.commentlist li.comment ul.children li.comment { }
-ol.commentlist li.comment ul.children li.comment-author-admin { }
 ol.commentlist li.comment ul.children li.depth-2 { border-left: 0px solid #555; margin: 0 0 10px 10px; }
 ol.commentlist li.comment ul.children li.depth-3 { border-left: 0px solid #999; margin: 0 0 10px 10px; }
 ol.commentlist li.comment ul.children li.depth-4 { border-left: 0px solid #bbb; margin: 0 0 10px 10px; }
-ol.commentlist li.comment ul.children li.depth-5 { }
-ol.commentlist li.comment ul.children li.odd { }
-ol.commentlist li.even {  }
-ol.commentlist li.odd {}
+
 ol.commentlist li.parent { border-left: 0px solid #111; }
-ol.commentlist li.thread-alt { }
-ol.commentlist li.thread-even { }
-ol.commentlist li.thread-odd {
- }
+
 .main-comment-container{
     position: relative;
+}
+
+.sd-title{
+	display: none !important;
+}
+
+.sd-content{
+	padding: 5px 0px 0px 30px;
 }
 
 form { }
@@ -423,11 +420,11 @@ margin: 10px;
 
 
 	#main{
-		padding: 20px 20px 50px 30px;
+		padding: 20px 0px 50px 0px;
 		-ms-word-wrap: break-word;
   		word-wrap: break-word;
 		margin: 0px auto;
-		width: 90%;
+		width: 100%;
 	}
 	#blog-container{
 		overflow: hidden;
@@ -619,6 +616,7 @@ margin: 10px;
 	}
 
 	#minimizer{
+		display: none;
 		position:  absolute;
 		z-index: 1000;
 		left: 100%;
@@ -850,6 +848,15 @@ a img.aligncenter {
 
 
 @media screen and (min-width:600px) {
+
+	#main{
+		padding: 20px 20px 50px 30px;
+	}
+
+	#minimizer{
+		display: block;
+	}
+
 	.comment-content{
 		padding-left: 90px;
 	}

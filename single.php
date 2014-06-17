@@ -3,6 +3,7 @@
 
 <?php if($_GET['empty'] == "comments"):?>
 
+	<?php echo sharing_display(); ?>
 	<div id="page-numbering">
 		<?php wp_link_pages("Page before=<p>&after=</p>&next_or_number=number&pagelink= %"); ?>
 	</div>
@@ -51,6 +52,8 @@
 					<?php the_tags('Tags: ', ', ', '<br />'); ?>
 					Entries: <?php the_category(', ') ?> 
 				</div>
+
+					<?php echo sharing_display(); ?>
 
 				<div id="page-numbering">
 				<?php wp_link_pages("Page before=<p>&after=</p>&next_or_number=number&pagelink= %"); ?>
