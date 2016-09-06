@@ -1,9 +1,11 @@
 
 <?php get_header(); ?>
 
-<div>
-	<div id="contentContainer">
-			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+
+    <div class="row">
+        <div class="small-9 columns">
+            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 				
 			<div <?php post_class('post') ?> id="post-<?php the_ID(); ?>">
 
@@ -21,11 +23,13 @@
 			
 
 			<?php endwhile; endif; ?>
+        </div>
+
+        <div class="small-3 columns">
+            <?php get_sidebar(); ?>
+        </div>
+    </div>
 
 
-	</div>
 
-	<div id="sidebarContainer">
-		<?php get_sidebar(); ?>
-	</div>
-</div>
+<?php get_footer(); ?>

@@ -25,7 +25,7 @@
 
 <div class="row">
 
-	<div id="title">
+	<div class="header-title">
 		<?php if(get_header_image() == "") : ?>
 			<a href="<?php echo home_url(); ?>/"><?php bloginfo('name'); ?></a>
 		<?php else: ?>
@@ -33,26 +33,14 @@
 		<?php endif; ?>
 	</div>
 
-	<div class="top-bar stacked-for-medium">
-	  <div class="top-bar-left">
+	<div class="top-bar stacked-for-medium header-container">
+	  <div class="top-bar">
 	    
-			<?php $args = array(
-                'menu'            => 'main-menu', 
-                'container'       => '', 
-                'container_class' => 'false', 
-                'container_id'    => '',
-                'menu_class'      => 'menu header-menu', 
-                'echo'            => true,
-                'fallback_cb'     => 'wp_page_menu',
-                'before'          => '',
-                'after'           => '',
-                'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-                'depth'           => 0,
-		      ); ?>
-		      <?php wp_nav_menu( $args); ?>
+			<?php wp_nav_menu(array('walker' => new Custom_Walker_Nav_Menu     ));?>
+		
 	  </div>
-	  <div class="top-bar-right">
-	  	<?php get_search_form(); ?>
-	  </div>
+	  <!-- <div class="top-bar-right">
+	  	<?php //get_search_form(); ?>
+	  </div> -->
 	</div>
 </div>

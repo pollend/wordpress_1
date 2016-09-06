@@ -4,21 +4,15 @@ var shell = require('gulp-shell');
 var  watch = require('gulp-watch');
 var batch = require('gulp-batch');
 var sass = require('gulp-sass');
-
+var uglify = require('gulp-uglifyjs');
+ 
 //build typescript
-gulp.task('typescript', function () {
-    return gulp.src('resource/typescript/**/*.ts')
-        .pipe(ts({
-        "target": "ES5",
-        "module": "system",
-        "moduleResolution": "node",
-        "sourceMap": true,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "removeComments": true,
-        "noImplicitAny": false
-        }))
-        .pipe(gulp.dest('src/app/static/typescript'));
+gulp.task('js', function () {
+    return gulp.src('src/js/**/*.js')
+    .pipe(uglify('app.min.js', {
+      outSourceMap: true
+    }))
+    .pipe(gulp.dest('js'))
 });
 
 // move templates from resource to the output directory
@@ -36,7 +30,9 @@ gulp.task('sass', function () {
 
 // copy library dependencies 
 gulp.task('lib', function() {
-    // gulp.src('node_modules/socket.io-client/**/*').pipe(gulp.dest('src/app/static/socket.io-client'));
+    gulp.src('node_modules/foundation-sites/js/**/*').pipe(gulp.dest('js/foundation'));
+    gulp.src('node_modules/jquery/dist/**/*').pipe(gulp.dest('js/jquery'));
+    gulp.src('node_modules/vue/dist/**/*').pipe(gulp.dest('js/vue'));
     // gulp.src('node_modules/angular2/**/*').pipe(gulp.dest('src/app/static/angular2'));
     // gulp.src('node_modules/rxjs/**/*').pipe(gulp.dest('src/app/static/rxjs'));
     // gulp.src('node_modules/systemjs/**/*').pipe(gulp.dest('src/app/static/systemjs'));
@@ -49,7 +45,7 @@ gulp.task('lib', function() {
 });
 
 // builds the static files
-gulp.task('build',['lib','sass']);
+gulp.task('build',['lib','sass','js']);
 
 // builds the project and runs the application
 gulp.task('run',['build'],shell.task(['python src/run.py']));
@@ -62,8 +58,8 @@ gulp.task('watch',function(){
     // just run in a separate terminal
     // gulp.start('run');
     
-    watch('resource/typescript/**/*.ts', batch(function (events, done) {
-        gulp.start('typescript', done);
+    watch('src/js/**/*.js', batch(function (events, done) {
+        gulp.start('js', done);
     }));
     watch('src/sass/**/*.scss', batch(function (events, done) {
         gulp.start('sass', done);

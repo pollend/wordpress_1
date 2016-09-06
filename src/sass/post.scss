@@ -1,0 +1,30 @@
+.post{
+
+	background:#ececec;
+
+	margin-top:.7em;
+	margin-bottom:1em;
+	padding: 1em 1em; 
+	& > .postTitle{
+		font-size: 3em;
+	}
+
+	&>.meta{
+		font-size: .7em;
+
+		padding-top:.1em;
+		padding-bottom:.2em;
+		padding-left:.6em;
+	}
+
+	&>.entry{
+		padding-top:.4em;
+		padding-bottom:.4em;
+		padding-left:.7em;
+	}
+
+	&>.postmetadata{
+		padding-left:1em;
+	}
+
+}

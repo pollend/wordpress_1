@@ -1,3 +1,30 @@
 .menu>ul{
 	@extend .menu;
 }
+
+.children{
+	@extend .dropdown;
+}
+
+
+.header-container{
+	background:none;
+	& .menu{
+		background:none;
+		
+	}
+
+	& .top-bar{
+		background:none;
+	}
+
+}
+
+.header-title{
+	font-size:4em;
+	text-align:center;
+	img{
+		width:auto;
+		max-height: 4em;
+	}
+}
