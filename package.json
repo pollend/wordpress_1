@@ -1,0 +1,26 @@
+{
+  "name": "",
+  "title": "",
+  "description": "",
+  "version": "0.1.0",
+  "homepage": "http://www.tis100pad.com/",
+  "author": {
+    "name": "Pollend",
+    "url": "https://github.com/pollend"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.10.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-batch": "^1.0.5",
+    "gulp-sass": "^2.2.0",
+    "gulp-shell": "^0.5.2",
+    "gulp-typescript": "^2.13.0",
+    "gulp-watch": "^4.3.5"
+  },
+  "dependencies": {
+    "foundation-sites": "^6.2.3"
+  }
+}
