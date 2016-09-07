@@ -9,9 +9,7 @@ var uglify = require('gulp-uglifyjs');
 //build typescript
 gulp.task('js', function () {
     return gulp.src('src/js/**/*.js')
-    .pipe(uglify('app.min.js', {
-      outSourceMap: true
-    }))
+    .pipe(uglify('app.min.js'))
     .pipe(gulp.dest('js'))
 });
 

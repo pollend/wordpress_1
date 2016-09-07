@@ -20,23 +20,23 @@
 
 	<head profile="http://gmpg.org/xfn/11"><?php wp_head(); ?></head>
 
-<body <?php body_class(); ?>>
-
+<body <?php body_class(); ?> id="app">
 
 <div class="row">
-
-	<div class="header-title">
+	<div class="header-title small-12">
 		<?php if(get_header_image() == "") : ?>
 			<a href="<?php echo home_url(); ?>/"><?php bloginfo('name'); ?></a>
 		<?php else: ?>
 			<img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
 		<?php endif; ?>
-	</div>
+	</div>	
+</div>
 
+<div class="row">
 	<div class="top-bar stacked-for-medium header-container">
-	  <div class="top-bar">
+	  <div class="top-bar" id="top-header">
 	    
-			<?php wp_nav_menu(array('walker' => new Custom_Walker_Nav_Menu     ));?>
+			<?php wp_nav_menu(array('walker' => new Custom_Walker_Nav_Menu));?>
 		
 	  </div>
 	  <!-- <div class="top-bar-right">

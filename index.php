@@ -1,15 +1,16 @@
 <?php get_header(); ?>
 
 
+
     <!-- <?php get_template_part( 'Presentation', 'index' ); ?> -->
     <div class="row">
-        <div class="small-9 columns">
+        <div class="small-12  medium-9 large-expand columns">
             <?php 
             query_posts('page_id='. get_query_var( 'page_id' ) .'&paged=' .  get_query_var( 'paged' )  ); 
             get_template_part( 'posts', 'index' ); ?>
         </div>
 
-        <div class="small-3 columns">
+        <div class="small-12 medium-3 large-expand columns">
             <?php get_sidebar(); ?>
         </div>
     </div>

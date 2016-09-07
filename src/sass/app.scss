@@ -30,7 +30,7 @@
 // @include foundation-progress-element;
 // @include foundation-meter-element;
 @include foundation-slider;
-@include foundation-sticky;
+//@include foundation-sticky;
 @include foundation-reveal;
 @include foundation-switch;
 @include foundation-table;
@@ -41,6 +41,11 @@
 @include foundation-top-bar;
 @include foundation-visibility-classes;
 @include foundation-float-classes;
+@include top-bar-stacked;
+
+@include foundation-flex-classes;
+@include foundation-flex-grid;
 
 @import "header";
+@import "search-form";
 @import "post";

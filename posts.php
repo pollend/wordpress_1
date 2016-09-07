@@ -4,11 +4,19 @@
 		<?php $content = get_the_content();?>
 		<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
 
-			<div class="postTitle"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></div>
+			<div class="row">
+				<div class="meta">
+					<div class="day"><?php the_time('j') ?></div>
+					<em><?php the_time('M Y') ?></em>
+				</div>
 
-			<div class="meta">
-				<em>Posted on:</em> <span class="postTime"><?php the_time('F jS, Y') ?></span> by <span class="postAuthor"><?php echo get_the_author()?></span>
+
+				<div class="title">
+					<a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
+				</div>
 			</div>
+
+			<div class="author">by: <?php echo get_the_author()?></div>
 
 			<?php 
 				if( has_post_format("image")){
