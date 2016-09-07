@@ -12,7 +12,7 @@
 
 <?php if ( have_comments() ) : ?>
 	
-	<h2 id="comments"><?php comments_number('Total Comments(0)', 'Total Comments(`)','Total Comments(%)' );?></h2>
+	<h2 id="comments"><?php comments_number('0 Comments', '','% Comments' );?></h2>
 
 	<div class="navigation">
 		<div class="next-posts"><?php previous_comments_link() ?></div>
@@ -20,7 +20,11 @@
 	</div>
 
 	<ol class="commentlist">
-		<?php wp_list_comments(array('avatar_size' => 70,'callback' => 'gray_comments_callback')); ?>
+		<?php wp_list_comments(array(
+		'avatar_size' => 70,
+		'walker' => new Custom_Comment_Walker()
+
+		)); ?>
 	</ol>
 
 	<div class="navigation">

@@ -1,6 +1,7 @@
 <?php
 
     include_once "custom-nav-walker.php";
+    include_once "custom-comment-walker.php";
 
     // function jptweak_remove_share() {
     //     remove_filter( 'the_content', 'sharing_display',19 );
@@ -48,7 +49,7 @@
 
         //wp_enqueue_script( 'vue',  get_template_directory_uri() ."/static/vue/vue.min.js",'1');
 
-        wp_enqueue_style( 'avro', 'https://fonts.googleapis.com/css?family=Arvo|Poiret+One', false );
+        wp_enqueue_style( 'avro', 'https://fonts.googleapis.com/css?family=Arvo|Poiret+One|Unica+One', false );
 
 
         wp_enqueue_script( 'main',  get_template_directory_uri() ."/js/app.min.js",array('jquery','vue'),'1',true);
