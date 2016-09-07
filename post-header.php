@@ -8,5 +8,5 @@
 		<a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
 	</div>
 </div>
-<div class="author">by: <?php echo get_the_author()?></div>
+<div class="author">by: <?php echo the_author_posts_link()?></div>
 

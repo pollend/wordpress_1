@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
-<div id="contentContainer">
+<div class="row">
+    <div class="small-12  medium-9 large-expand columns">
 		<?php if (have_posts()) : ?>
 
  			<?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
@@ -30,20 +31,20 @@
 		
 		<?php get_template_part( 'posts', 'index' );  ?>
 
-			
-	<?php else : ?>
+				
+		<?php else : ?>
 
-		<h2>Nothing found</h2>
+			<h2>Nothing found</h2>
 
-	<?php endif; ?>
-	<script type="text/javascript" src=" <?php echo bloginfo('template_directory') . "/js/blog.js?ver=1.0.0"; ?>"></script>
+		<?php endif; ?>
+		<script type="text/javascript" src=" <?php echo bloginfo('template_directory') . "/js/blog.js?ver=1.0.0"; ?>"></script>
 
+	</div>
 
+  	<div class="small-12 medium-3 large-expand columns">
+		<?php get_sidebar(); ?>
+	</div>
 </div>
 
-<div id="sidebarContainer">
-	<?php get_sidebar(); ?>
-</div>
-</div>
-</div>
 
+<?php get_footer(); ?>
