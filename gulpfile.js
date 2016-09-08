@@ -29,6 +29,7 @@ gulp.task('sass', function () {
 // copy library dependencies 
 gulp.task('lib', function() {
     gulp.src('node_modules/foundation-sites/js/**/*').pipe(gulp.dest('js/foundation'));
+     gulp.src('node_modules/foundation-sites/dist/**/*').pipe(gulp.dest('js/foundation'));
     gulp.src('node_modules/jquery/dist/**/*').pipe(gulp.dest('js/jquery'));
     gulp.src('node_modules/vue/dist/**/*').pipe(gulp.dest('js/vue'));
     // gulp.src('node_modules/angular2/**/*').pipe(gulp.dest('src/app/static/angular2'));

@@ -2,7 +2,8 @@
 
 
 
-    <!-- <?php get_template_part( 'Presentation', 'index' ); ?> -->
+    <?php get_template_part( 'Presentation', 'index' ); ?> 
+    
     <div class="row">
         <div class="small-12  medium-9 large-expand columns">
             <?php 

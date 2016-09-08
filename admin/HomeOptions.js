@@ -1,4 +1,20 @@
 
+new Vue({
+  el: '#slide_options',
+  data: [{payload:"aaa"},{payload:"aaa"},{payload:"aaa"}],//payload,
+  methods: {
+  	addEntry: function(){
+  		if(this.slides == null)
+  			this.slides = [];
+  		this.slides.push({
+  			payload:"",
+			link:"",
+			blurb: ""
+  		});
+  	}
+  }
+});
+/*
 
 jQuery(document).ready(function() {
 	jQuery(".Upload div").each(function(element){
@@ -73,4 +89,4 @@ jQuery(document).ready(function() {
 
 
   
-});
+});*/

@@ -19,7 +19,8 @@
     "gulp-shell": "^0.5.2",
     "gulp-typescript": "^2.13.0",
     "gulp-uglifyjs": "^0.6.2",
-    "gulp-watch": "^4.3.5"
+    "gulp-watch": "^4.3.5",
+    "motion-ui": "^1.2.2"
   },
   "dependencies": {
     "foundation-sites": "^6.2.3",

@@ -1,4 +1,6 @@
 @import './../../node_modules/foundation-sites/scss/foundation';
+@import './../../node_modules/motion-ui/src/motion-ui';
+
 
 
 @include foundation-global-styles;
@@ -46,11 +48,20 @@
 @include foundation-flex-classes;
 @include foundation-flex-grid;
 
+@include orbit-slide;
+@include orbit-container;
+
+@include motion-ui-transitions;
+@include motion-ui-animations;
+
 @import "header";
 @import "search-form";
 @import "post";
 @import "comments";
 @import "footer";
+@import "overlay";
+@import "sidebar";
+@import "carousel";
 
 body{
 	font-family: 'Arvo', serif;

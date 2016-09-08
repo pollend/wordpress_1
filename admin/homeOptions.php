@@ -6,9 +6,11 @@
 
     	wp_enqueue_script('media-upload');
 		wp_enqueue_script('thickbox');
-		wp_register_script('my-upload', get_template_directory_uri() .'/admin/HomeOptions.js', array('jquery','media-upload','thickbox'));
+		wp_register_script('my-upload', get_template_directory_uri() .'/admin/HomeOptions.js', array('jquery','media-upload','thickbox'),1,true);
 		wp_enqueue_script('my-upload');
 		wp_enqueue_style('thickbox');
+		
+		wp_enqueue_script( 'vue',  get_template_directory_uri() ."/js/vue/vue.min.js",'1');
 
 		register_setting( 'gray_home_options', 'gray_home_options');
 
@@ -34,22 +36,27 @@
     function gray_slide_field() {
     	$options = get_option("gray_home_options");
         ?> 
+        <script>
+        	var payload = <?php echo json_encode($options); ?>
+        </script>
+
+        
 	        <div id="slide_options">
-		        <?php 
-		        for($x = 0; $x < count($options["Slide"]); $x++)
-		        {
-		        	?>
-		        	<div id="slides_option_container<?php echo $x ?>">
-						<input id="upload_image<?php echo $x ?>" type="text" size="36" name='gray_home_options[Slide][<?php echo $x; ?>]' value="<?php echo  htmlentities($options["Slide"][$x]) ?>" />
-						<input id="upload_image_button<?php echo $x ?>" type="button" value="Upload Image" />
-						<input id="remove_slide<?php echo $x ?>" type="button" value="remove" /></br>Input raw HTML into slide: 
-						<input name='gray_home_options[isHTML][<?php echo $x; ?>]' <?php echo empty($options["isHTML"][$x]) ? "" : "checked"; ?> value="1" type="checkbox"/>
-					</div>
-		        	<?php
-		        }
-		        ?>
+	        	<div v-for="sl in slides">
+
+					<input type="text" size="36" name='gray_home_options[slides][{{ $index }}][payload]' value="{{ sl.payload }}" />
+					<input type="button" value="Upload Image" />
+					<input type="button" value="remove" />
+
+					</br>Link: 
+					<input type="text" size="36" name='gray_home_options[slides][{{ $index }}][link]' value="{{ sl.link }}" />					
+
+					</br>Blurb: 
+					<input type="text" size="36" name='gray_home_options[slides][{{ $index }}][blurb]' value="{{ sl.blurb }}" />
+				</div>
+	        	<div><a v-on:click="addEntry()" href="#">add Slide</a></div>
 	        </div>
-	         <div><a id="addSlide" href="#">add Slide</a></div>
+	         
         <?php
 
     }

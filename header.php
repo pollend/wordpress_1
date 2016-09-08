@@ -20,7 +20,29 @@
 
 	<head profile="http://gmpg.org/xfn/11"><?php wp_head(); ?></head>
 
+
+
 <body <?php body_class(); ?> id="app">
+
+
+	<div id="overlay-backdrop"></div>
+	<div id="overlay-enlarged-image-container">
+		<div id="overlay-image">
+			<img id="image-overlay-image"></img>
+			<div id="image-over-loading"></div>
+			<a id="image-overlay-close" href="#"><div class="overlay-controls"></div></a>
+			<div id="image-overlay-caption" class="overlay-controls">
+				<div class="num-images"></div>
+
+				<div class="image-caption"></div>
+
+			</div>
+			<a href="#" id="image-overlay-left"><div class="click-area"></div><div class="button" class="overlay-controls"></div></a>
+			<a href="#" id="image-overlay-right"><div class="click-area"></div><div class="button" class="overlay-controls"></div></a>
+
+		</div>
+	</div>
+
 
 <div class="row">
 	<div class="header-title small-12">
@@ -34,11 +56,11 @@
 
 <div class="row">
 	<div class="top-bar stacked-for-medium header-container">
-	  <div class="top-bar" id="top-header">
+	  <!-- <div class="top-bar" id="top-header"> -->
 	    
 			<?php wp_nav_menu(array('walker' => new Custom_Walker_Nav_Menu));?>
 		
-	  </div>
+	  <!-- </div> -->
 	  <!-- <div class="top-bar-right">
 	  	<?php //get_search_form(); ?>
 	  </div> -->

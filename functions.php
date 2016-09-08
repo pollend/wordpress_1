@@ -50,20 +50,11 @@
         //wp_enqueue_script( 'vue',  get_template_directory_uri() ."/static/vue/vue.min.js",'1');
 
         wp_enqueue_style( 'avro', 'https://fonts.googleapis.com/css?family=Arvo|Poiret+One|Unica+One', false );
-
-
-        wp_enqueue_script( 'main',  get_template_directory_uri() ."/js/app.min.js",array('jquery','vue'),'1',true);
-        wp_enqueue_script('vue',get_template_directory_uri()."/js/vue/vue.min.js");
-
+        wp_enqueue_script('transit',"http://ricostacruz.com/jquery.transit/jquery.transit.min.js",array('jquery'));
         wp_enqueue_script('jquery');
+        wp_enqueue_script( 'main',  get_template_directory_uri() ."/js/app.min.js",array('jquery','transit','foundation.min'),'1',true);
 
-        
-
-        // wp_enqueue_script('foundation.core',get_template_directory_uri()."/js/foundation/foundation.core.js",array('jquery'));
-        // wp_enqueue_script('foundation.util.keyboard',get_template_directory_uri()."/js/foundation/foundation.util.keyboard.js ",array('jquery','foundation.core'));
-        // wp_enqueue_script('foundation.util.box',get_template_directory_uri()."/js/foundation/foundation.util.box.js ",array('jquery','foundation.core'));
-        // wp_enqueue_script('foundation.util.nest',get_template_directory_uri()."/js/foundation/foundation.util.nest.js ",array('jquery','foundation.core'));
-        // wp_enqueue_script('foundation.dropdownMenu',get_template_directory_uri()."/js/foundation/foundation.dropdownMenu.js",array('jquery','foundation.core'),null,true);
+         wp_enqueue_script('foundation.min',get_template_directory_uri()."/js/foundation/foundation.min.js",array('jquery'),null,true);
 
     }
     add_action( 'wp_enqueue_scripts', 'smoke_tree_script_style' );
