@@ -36,17 +36,25 @@
     function gray_slide_field() {
     	$options = get_option("gray_home_options");
         ?> 
+
+
         <script>
-        	var payload = <?php echo json_encode($options); ?>
+	        <?php if(isset($options['slides'])):?>
+	        	var slide_payload = <?php echo json_encode($options['slides']); ?>
+	        <?php else: ?>
+	        	var slide_payload = [];
+	        <?php endif; ?>
         </script>
 
         
 	        <div id="slide_options">
+
+
 	        	<div v-for="sl in slides">
 
 					<input type="text" size="36" name='gray_home_options[slides][{{ $index }}][payload]' value="{{ sl.payload }}" />
-					<input type="button" value="Upload Image" />
-					<input type="button" value="remove" />
+					<input type="button" value="Upload Image" v-on:click="setImage($index)" />
+					<input type="button" value="remove"  v-on:click="removeEntry($index)"/>
 
 					</br>Link: 
 					<input type="text" size="36" name='gray_home_options[slides][{{ $index }}][link]' value="{{ sl.link }}" />					
