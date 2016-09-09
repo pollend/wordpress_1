@@ -4,18 +4,18 @@
     function gray_home_init(){
 	
 
+
+		wp_register_script('theme_options', get_template_directory_uri() .'/admin/ThemeSettings.js', array('jquery','media-upload','thickbox'),1,true);
     	wp_enqueue_script('media-upload');
 		wp_enqueue_script('thickbox');
-		wp_register_script('my-upload', get_template_directory_uri() .'/admin/HomeOptions.js', array('jquery','media-upload','thickbox'),1,true);
-		wp_enqueue_script('my-upload');
 		wp_enqueue_style('thickbox');
 		
 		wp_enqueue_script( 'vue',  get_template_directory_uri() ."/js/vue/vue.min.js",'1');
 
-		register_setting( 'gray_home_options', 'gray_home_options');
+		register_setting( 'home_slides', 'home_slides');
 
-        add_settings_section('gray_slides', 'Slides', 'gray_slide_section', 'gray_home_slide_settings');
-        add_settings_field('Slides', 'Slides', 'gray_slide_field', 'gray_home_slide_settings', 'gray_slides');
+        add_settings_section('slide_section', 'Slides', 'slide_section', 'slide_settings');
+        add_settings_field('slides_field', 'Slides', 'slide_field', 'slide_settings', 'slide_section');
 
        
     }
@@ -23,7 +23,7 @@
 
 
 
-    function gray_slide_section() {
+    function slide_section() {
    	?>
 
   	  <div>Note: images will have to maintain a 2:1 ratio to function properly in the slide show</div>
@@ -33,14 +33,15 @@
   	  <?php
     } 
 
-    function gray_slide_field() {
-    	$options = get_option("gray_home_options");
+    function slide_field() {
+    	wp_enqueue_script("theme_options");
+    	$options = get_option("home_slides");
         ?> 
 
 
         <script>
-	        <?php if(isset($options['slides'])):?>
-	        	var slide_payload = <?php echo json_encode($options['slides']); ?>
+	        <?php if(isset($options)):?>
+	        	var slide_payload = <?php echo json_encode($options); ?>
 	        <?php else: ?>
 	        	var slide_payload = [];
 	        <?php endif; ?>
@@ -52,15 +53,15 @@
 
 	        	<div v-for="sl in slides">
 
-					<input type="text" size="36" name='gray_home_options[slides][{{ $index }}][payload]' value="{{ sl.payload }}" />
+					<input type="text" size="36" name='home_slides[{{ $index }}][payload]' value="{{ sl.payload }}" />
 					<input type="button" value="Upload Image" v-on:click="setImage($index)" />
 					<input type="button" value="remove"  v-on:click="removeEntry($index)"/>
 
 					</br>Link: 
-					<input type="text" size="36" name='gray_home_options[slides][{{ $index }}][link]' value="{{ sl.link }}" />					
+					<input type="text" size="36" name='home_slides[{{ $index }}][link]' value="{{ sl.link }}" />					
 
 					</br>Blurb: 
-					<input type="text" size="36" name='gray_home_options[slides][{{ $index }}][blurb]' value="{{ sl.blurb }}" />
+					<input type="text" size="36" name='home_slides[{{ $index }}][blurb]' value="{{ sl.blurb }}" />
 				</div>
 	        	<div><a v-on:click="addEntry()" href="#">add Slide</a></div>
 	        </div>
@@ -69,7 +70,7 @@
 
     }
 
-    function gray_home_option_validate($input){
+    function home_option_validate($input){
     	$index = 0;
 		for($x = 0; $x < $input["numslides"]; $x++)
 	    {
@@ -92,7 +93,7 @@
     }
 
 
-function gray_home_options_page()
+function theme_settings()
 {
 	if (!current_user_can('manage_options'))
     {
@@ -100,17 +101,14 @@ function gray_home_options_page()
     }
 
 	?>
-	<script type="text/javascript">
-	</script>
 
 	<div class="wrap">
 	<?php screen_icon(); ?>
 	<h2>Theme Options</h2>
 	    
 	<form action="options.php" method="post" >
-		<?php settings_fields('gray_home_options'); ?>
-
-		<?php do_settings_sections('gray_home_slide_settings'); ?>
+		<?php settings_fields('home_slides'); ?>
+		<?php do_settings_sections('slide_settings'); ?>
 		<?php submit_button(); ?>
 	</form>
 

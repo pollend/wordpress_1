@@ -9,7 +9,9 @@
 				
 			<div <?php post_class('post') ?> id="post-<?php the_ID(); ?>">
 
-				<div class="postTitle"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></div>
+				<div class="title">
+					<a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
+				</div>
 
 				<div class="meta"></div>
 

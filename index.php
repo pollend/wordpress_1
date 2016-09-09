@@ -7,8 +7,31 @@
     <div class="row">
         <div class="small-12  medium-9 large-expand columns">
             <?php 
-            query_posts('page_id='. get_query_var( 'page_id' ) .'&paged=' .  get_query_var( 'paged' )  ); 
-            get_template_part( 'posts', 'index' ); ?>
+            //query_posts('page_id='. get_query_var( 'page_id' ) .'&paged=' .  get_query_var( 'paged' )  ); 
+            query_posts(
+                array(
+                    'post_type' => array( 'post', 'game' ),
+                    'page_id' =>  get_query_var( 'page_id' ),
+                    'paged' =>  get_query_var( 'paged' )
+                ));
+
+            if (have_posts())
+            { 
+                while (have_posts())
+                { 
+                    the_post();
+                    switch(get_post_type()){
+                        case "game":
+                            get_template_part( 'posts', 'game' );
+                            break;
+                        case "post":
+                            get_template_part( 'posts', 'index' );
+                            break;
+                    }
+                }
+            }
+            
+             ?>
         </div>
 
         <div class="small-12 medium-3 large-expand columns">
