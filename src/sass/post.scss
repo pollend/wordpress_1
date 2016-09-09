@@ -6,12 +6,19 @@
 
 .post, .game{
 
+	.post-head-image{
+		width: 100%;
+		height: auto;
+	}
+
 	background:#ececec;
 
 	margin-top:.7em;
 	margin-bottom:1em;
-	padding: 1em 1em; 
-
+	
+.main-container{
+		padding: 1em 1em; 
+	}
 
 		.title{
 			font-size: 3em;
@@ -64,5 +71,5 @@
 		padding-bottom:1em;
     	border-color: #d0d0d0;
 		box-shadow: 1px 1px #b5b5b5;
-
 }
+
