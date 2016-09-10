@@ -125,16 +125,16 @@ function ImageOverlay( gallerID,  itemID){
 						//make sure image dosent leave screen
 						if((lImageHeight+95) > lScreenHeight )
 						{
-							lImageWidth = Math.round(laspectRatio*(lScreenHeight-150));
+							lImageWidth = Math.round(laspectRatio*(lScreenHeight));
 							lImageHeight = Math.round(lScreenHeight-150);
 						}
 						if(lImageWidth > lScreenWidth)
 						{
-							lImageWidth = Math.round(lScreenWidth-25);
-							lImageHeight =Math.round((lScreenWidth-25)/laspectRatio);
+							lImageWidth = Math.round(lScreenWidth);
+							lImageHeight =Math.round((lScreenWidth)/laspectRatio);
 						}
-						jQuery("#image-overlay-image").width(lImageWidth);
-						jQuery("#image-overlay-image").height(lImageHeight);
+						jQuery("#image-overlay-image").width(lImageWidth-10);
+						jQuery("#image-overlay-image").height(lImageHeight-5);
 
 
 						jQuery("#overlay-image").transition({width:lImageWidth},100,function(){

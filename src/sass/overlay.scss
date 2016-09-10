@@ -24,8 +24,8 @@
 }
 
 #overlay-image{
-  width: 500px;
-  height: 500px;
+  // width: 500px;
+  // /height: 500px;
   margin: 0px auto;
   position: relative;
   display: block;
@@ -38,12 +38,16 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 117px;
-  height: 36px;
+  // width: 117px;
+  // height: 36px;
   margin-left: -58px;
   margin-top: -18px;
   background: url("images/loading.gif");
   display: none;
+}
+
+#image-overlay-image{
+  max-width: none;
 }
 
 #image-overlay-close div{
