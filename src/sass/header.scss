@@ -1,6 +1,33 @@
 
 //test
 
+
+
+.menu>ul{
+	@extend .menu;
+}
+
+
+.menu>ul ul, .menu ul{
+	@extend .sub-menu;
+
+	.menu-item{
+		padding:.6em;
+	}
+
+	width:calc(100% + 2em);
+	margin:0px;
+	list-style-type:none;
+	display:none;
+	position: absolute;
+	z-index:1000;
+	ul {
+		left:100%;
+		top:0px;
+	}
+}
+
+
 .header-container{
 	background:none;
 	.menu{
@@ -14,8 +41,15 @@
 
 }
 
-.menu-item-has-children:hover > .sub-menu{
-	display:block;
+.page_item_has_children, .menu-item-has-children{
+	position:relative;
+	&:hover > .children{
+		display:block;
+	}
+
+	&:hover > .sub-menu{
+		display:block;
+	}
 
 }
 

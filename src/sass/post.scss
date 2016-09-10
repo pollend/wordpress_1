@@ -4,7 +4,7 @@
 }
 
 
-.post, .game{
+.post, .type-page, .type-attachment {
 
 	.post-head-image{
 		width: 100%;
@@ -16,8 +16,8 @@
 	margin-top:.7em;
 	margin-bottom:1em;
 	
-.main-container{
-		padding: 1em 1em; 
+	.main-container{
+			padding: 1em 1em; 
 	}
 
 		.title{

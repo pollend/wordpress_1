@@ -4,37 +4,29 @@
 
 
     <div class="row">
-        <div class="small-9 columns">
-            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-				
+        <div class="small-12  medium-9 large-expand columns">
+                
+            <?php 
 
+            if (have_posts()) : while (have_posts()) : the_post();
+                    get_template_part( 'content', 'page' );
+                    
+                    // If comments are open or we have at least one comment, load up the comment template.
+                    if ( comments_open() || get_comments_number() ) :
+                        comments_template();
+                    endif;
 
-			<div <?php post_class('post') ?> id="post-<?php the_ID(); ?>">
+                    //close post
+                    echo '</div>';
 
+                endwhile;
+            endif;
 
-				<div class="main-container">
-					<div class="title">
-						<a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
-					</div>
-
-					<div class="meta"></div>
-
-
-					<div class="entry">
-						<?php the_content(); ?>
-						
-					</div>
-					<?php comments_template(); ?>
-				</div>
-			</div>
-			
-
-			<?php endwhile; endif; ?>
+            ?>
         </div>
-
-        <div class="small-3 columns">
+        <div class="small-12 medium-3 large-expand columns">
             <?php get_sidebar(); ?>
-        </div>
+        </div> 
     </div>
 
 

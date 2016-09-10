@@ -29,7 +29,7 @@
 			<?php } ?>
 			</div>
 		
-		<?php get_template_part( 'posts', 'index' );  ?>
+			<?php get_template_part( 'posts', get_post_format() );  ?>
 
 				
 		<?php else : ?>

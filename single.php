@@ -1,26 +1,28 @@
 <?php get_header(); ?>
 
-	<div class="row">
-	    <div class="small-9 columns">
-	    <?php
-                 while (have_posts())
-                { 
-                    the_post();
-                    switch(get_post_type()){
-                        case "game":
-                            get_template_part( 'posts', 'game' );
-                            break;
-                        case "post":
-                            get_template_part( 'posts', 'index' );
-                            break;
-                    }
-                }	
-               ?>
-		</div>
+    <div class="row">
+        <div class="small-9 columns">
+        <?php
+        while (have_posts())
+        { 
+            the_post();
+            get_template_part( 'content', get_post_format() );
+
+          // If comments are open or we have at least one comment, load up the comment template.
+            if ( comments_open() || get_comments_number() ) :
+                comments_template();
+            endif;
+
+            //close post
+            echo '</div>';
+        } 
+
+        ?>
+        </div>
 
         <div class="small-3 columns">
             <?php get_sidebar(); ?>
         </div>
-	</div>
+    </div>
 
 <?php get_footer(); ?>

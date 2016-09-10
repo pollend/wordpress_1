@@ -1,54 +1,57 @@
-<?php
 
-	if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
-		die ('Please do not load this page directly. Thanks!');
+<div class="main-container-comments">
+    <?php
 
-	if ( post_password_required() ) { ?>
-		This post is password protected. Enter the password to view comments.
-	<?php
-		return;
-	}
-?>
+        if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
+            die ('Please do not load this page directly. Thanks!');
 
-<?php if ( have_comments() ) : ?>
-	
-	<h2 id="comments"><?php comments_number('0 Comments', '','% Comments' );?></h2>
+        if ( post_password_required() ) { ?>
+            This post is password protected. Enter the password to view comments.
+        <?php
+            return;
+        }
+    ?>
 
-	<div class="navigation">
-		<div class="next-posts"><?php previous_comments_link() ?></div>
-		<div class="prev-posts"><?php next_comments_link() ?></div>
-	</div>
+    <?php if ( have_comments() ) : ?>
+        
+        <h2 id="comments"><?php comments_number('0 Comments', '','% Comments' );?></h2>
 
-	<ol class="commentlist">
-		<?php wp_list_comments(array(
-		'avatar_size' => 70,
-		'walker' => new Custom_Comment_Walker()
+        <div class="navigation">
+            <div class="next-posts"><?php previous_comments_link() ?></div>
+            <div class="prev-posts"><?php next_comments_link() ?></div>
+        </div>
 
-		)); ?>
-	</ol>
+        <ol class="commentlist">
+            <?php wp_list_comments(array(
+            'avatar_size' => 70,
+            'walker' => new Custom_Comment_Walker()
 
-	<div class="navigation">
-		<div class="next-posts"><?php previous_comments_link() ?></div>
-		<div class="prev-posts"><?php next_comments_link() ?></div>
-	</div>
-	
- <?php else : // this is displayed if there are no comments so far ?>
+            )); ?>
+        </ol>
 
-	<?php if ( comments_open() ) : ?>
-		<!-- If comments are open, but there are no comments. -->
+        <div class="navigation">
+            <div class="next-posts"><?php previous_comments_link() ?></div>
+            <div class="prev-posts"><?php next_comments_link() ?></div>
+        </div>
+        
+     <?php else : // this is displayed if there are no comments so far ?>
 
-	 <?php else : // comments are closed ?>
-	 	<?php  if(!is_page()): ?>
-			<p class="closed-comments">Comments are closed.</p>
-		<?php endif; ?>
+        <?php if ( comments_open() ) : ?>
+            <!-- If comments are open, but there are no comments. -->
 
-	<?php endif; ?>
-	
-<?php endif; ?>
+         <?php else : // comments are closed ?>
+            <?php  if(!is_page()): ?>
+                <p class="closed-comments">Comments are closed.</p>
+            <?php endif; ?>
 
-<?php if ( comments_open() ) : ?>
-	<div id="comment-main-container">
-		<?php comment_form(array('cancel_reply_link' => '<div id="cancel-button"></div>')); ?>
-	</div>
+        <?php endif; ?>
+        
+    <?php endif; ?>
 
-<?php endif; ?>
+    <?php if ( comments_open() ) : ?>
+        <div id="comment-main-container">
+            <?php comment_form(array('cancel_reply_link' => '<div id="cancel-button"></div>')); ?>
+        </div>
+
+    <?php endif; ?>
+</div>

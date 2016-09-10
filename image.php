@@ -11,6 +11,7 @@
                 { 
                     the_post();
                     get_template_part( 'content', get_post_format() );
+
                     //close post
                     echo '</div>';
                 }
@@ -29,7 +30,7 @@
         <div class="small-12 medium-3 large-expand columns">
             <?php get_sidebar(); ?>
         </div>
-        <?php theme_main_paginator(); ?>
+        <?php theme_main_paginator();  ?>
     </div>
 
 <?php get_footer(); ?>

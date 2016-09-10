@@ -1,3 +1,4 @@
- jQuery(document).ready(function() {
+//load up foundation
+jQuery(document).ready(function() {
       jQuery(document).foundation();
 });

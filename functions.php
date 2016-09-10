@@ -1,7 +1,5 @@
 <?php
 
-    include_once "custom-nav-walker.php";
-    include_once "custom-comment-walker.php";
 
     //places a home link on the page
     function gray_menu_args( $args ) {
@@ -15,9 +13,6 @@
     //enqueue scripts
     function smoke_tree_script_style()
     {
-
-        wp_enqueue_style( 'style-name', get_template_directory_uri() ."/css/app.css" );
-
         //add javascript to pages with comment form
         wp_enqueue_script( 'comment-reply' );
 
@@ -73,18 +68,6 @@
     add_action( 'after_setup_theme', 'smoke_tree_setup' );
 
 
-
-    //add the admin options
-    function gray_admin_menu()
-    {
-        include_once "admin/theme-settings.php";
-        include_once "admin/game/game-header-meta.php";
-        
-        add_theme_page('gray home page', 'Theme Options', 'read', 'home', 'theme_settings');
-    
-
-    }
-    add_action('admin_menu','gray_admin_menu');
   
     function gray_comments_callback( $comment, $args, $depth ) {
         ?>
@@ -159,5 +142,23 @@ function game_post_type() {
 
 }
 add_action( 'init', 'game_post_type', 0 );
+
+
+/**
+ * Implement the Custom comment walker feature.
+ *
+ * @since Twenty Fifteen 1.0
+ */
+require get_template_directory() . '/inc/custom-comment-walker.php';
+
+/**
+ * Implement the Custom comment walker feature.
+ *
+ * @since Twenty Fifteen 1.0
+ */
+require get_template_directory() . '/inc/custom-pagination.php';
+
+require get_template_directory() . '/inc/theme-customizer-page.php';
+
 
 ?>
