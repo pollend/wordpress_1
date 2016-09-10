@@ -1,3 +1,5 @@
+<div class="featured">Featured</div>
+
 <div class="row">
     <div class="meta">
         <div class="day"><?php the_time('j') ?></div>

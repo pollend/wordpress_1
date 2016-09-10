@@ -4,72 +4,100 @@
 }
 
 
-.post, .type-page, .type-attachment {
-
-	.post-head-image{
-		width: 100%;
-		height: auto;
+.post.sticky {
+	.featured{
+		display: block !important;
 	}
-
-	background:#ececec;
-
-	margin-top:.7em;
-	margin-bottom:1em;
-	
 	.main-container{
-			padding: 1em 1em; 
+		padding-top:2.3em;
 	}
-
-		.title{
-			font-size: 3em;
-			font-family: 'Poiret One', cursive;
-		}
-
-
-		.meta{
-			border-right-style: solid;
-			border-width:1px;
-
-			text-align: center;
-			font-size: .7em;
-			line-height: 1;
-
-			padding-top:.1em;
-			padding-bottom:.2em;
-			padding-left:.6em;
-			margin-top: 1em;
-			margin-right: 1em;
-			padding-right: 1em;
-			.day{
-				margin: 0px;
-				font-size: 5em;
-			}
-		}
-		.author{
-			font-size: .7em;
-			margin-left: .7em;
-			margin-top: 1em;
-		}
-
-		.row{
-			margin:0;
-		}
-
-		.entry{
-			padding-top:.4em;
-			padding-bottom:.4em;
-			padding-left:.7em;
-		}
-
-		.postmetadata{
-			padding-left:1em;
-		}
-
-		border-bottom-style: solid;
-		border-width:1px;
-		margin-bottom: 1em;
-		padding-bottom:1em;
-    	border-color: #d0d0d0;
-		box-shadow: 1px 1px #b5b5b5;
 }
 
+.post, .type-page, .type-attachment {
+
+
+
+
+    .post-head-image{
+        width: 100%;
+        height: auto;
+    }
+
+    background:#ececec;
+
+    margin-top:.7em;
+    margin-bottom:1em;
+    
+
+
+    .main-container{
+            padding: 1em; 
+
+            .featured{
+            	position:absolute;
+            	top: 0px;
+            	left: 1em;
+            	padding:.4em;
+            	color: white;
+            	background:#383838;
+            	display: none;
+            }
+    }
+
+    .title{
+        font-size: 3em;
+        font-family: 'Poiret One', cursive;
+    }
+
+
+    .meta{
+        border-right-style: solid;
+        border-width:1px;
+
+        text-align: center;
+        font-size: .7em;
+        line-height: 1;
+
+        padding-top:.1em;
+        padding-bottom:.2em;
+        padding-left:.6em;
+        margin-top: 1em;
+        margin-right: 1em;
+        padding-right: 1em;
+        .day{
+            margin: 0px;
+            font-size: 5em;
+        }
+    }
+    .author{
+        font-size: .7em;
+        margin-left: .7em;
+        margin-top: 1em;
+    }
+
+    .row{
+        margin:0;
+    }
+
+    .entry{
+        padding-top:.4em;
+        padding-bottom:.4em;
+        padding-left:.7em;
+    }
+
+    .postmetadata{
+        padding-left:1em;
+    }
+
+    border-bottom-style: solid;
+    border-width:1px;
+    margin-bottom: 1em;
+    padding-bottom:1em;
+    border-color: #d0d0d0;
+    box-shadow: 1px 1px #b5b5b5;
+    position: relative;
+}
+
+.wp-caption {
+    max-width:100% !important;
+}
