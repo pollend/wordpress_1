@@ -7,73 +7,73 @@ var selectedImage = 0;
 
 var lockImageProgression = false;
 
-	//looks for each gallery grouping
-	jQuery(".gallery").each(function(){
+//looks for each gallery grouping
+jQuery(".gallery").each(function(){
 
-		var gallery = new Array();
-		jQuery(this).find(".gallery-item").each(function(associatedImgID)
+	var gallery = new Array();
+	jQuery(this).find(".gallery-item").each(function(associatedImgID)
+	{
+		if(jQuery(this).find("a[href$='.jpg'],a[href$='.png']").length === 0)
 		{
-			if(jQuery(this).find("a[href$='.jpg'],a[href$='.png']").length === 0)
-			{
-				jQuery(this).find(".wp-caption-text").css("display","block");
-			}
-			else
-			{
-
-				var item = new Array();
-				item.push(jQuery(this).find("a").attr("href")); //push href onto item
-				jQuery(this).find("a").attr("href", "#");//reassign href to #
-				item.push(jQuery(this).find(".wp-caption-text").html());//push caption
-				gallery.push(item);
-
-				jQuery(this).find("a").on("click",{galleryID :(gallerygroup.length) , imageID : (gallery.length-1)},function(event){
-					ImageOverlay(event.data.galleryID,event.data.imageID);
-					return false;
-				});
-
-			}
-		});
-
-		gallerygroup.push(gallery);
-	});
-
-	jQuery("#image-overlay-close").on("click",function(){
-		ImageOverlayClose();
-		return false;
-	});
-
-	jQuery("#overlay-backdrop").on("click",function(){
-		ImageOverlayClose();
-		return false;
-	});
-
-	jQuery("#overlay-enlarged-image-container").on("click",function(){
-		ImageOverlayClose();
-		return false;
-	});
-
-	jQuery("#image-overlay-left").on("click",function(event){
-		var imageID = selectedImage;
-		imageID--;
-		if(imageID < 0)
-		{
-			imageID = gallerygroup[selectedGallery].length -1;
+			jQuery(this).find(".wp-caption-text").css("display","block");
 		}
-		ImageOverlay(selectedGallery,imageID);
-		event.stopImmediatePropagation();
-		return false;
-	});
-	jQuery("#image-overlay-right").on("click",function(event){
-		var imageID = selectedImage;
-		imageID++;
-		if(imageID >= gallerygroup[selectedGallery].length)
+		else
 		{
-			imageID = 0;
+
+			var item = new Array();
+			item.push(jQuery(this).find("a").attr("href")); //push href onto item
+			jQuery(this).find("a").attr("href", "#");//reassign href to #
+			item.push(jQuery(this).find(".wp-caption-text").html());//push caption
+			gallery.push(item);
+
+			jQuery(this).find("a").on("click",{galleryID :(gallerygroup.length) , imageID : (gallery.length-1)},function(event){
+				ImageOverlay(event.data.galleryID,event.data.imageID);
+				return false;
+			});
+
 		}
-		ImageOverlay(selectedGallery,imageID);
-		event.stopImmediatePropagation();
-		return false;
 	});
+
+	gallerygroup.push(gallery);
+});
+
+jQuery("#image-overlay-close").on("click",function(){
+	ImageOverlayClose();
+	return false;
+});
+
+jQuery("#overlay-backdrop").on("click",function(){
+	ImageOverlayClose();
+	return false;
+});
+
+jQuery("#overlay-enlarged-image-container").on("click",function(){
+	ImageOverlayClose();
+	return false;
+});
+
+jQuery("#image-overlay-left").on("click",function(event){
+	var imageID = selectedImage;
+	imageID--;
+	if(imageID < 0)
+	{
+		imageID = gallerygroup[selectedGallery].length -1;
+	}
+	ImageOverlay(selectedGallery,imageID);
+	event.stopImmediatePropagation();
+	return false;
+});
+jQuery("#image-overlay-right").on("click",function(event){
+	var imageID = selectedImage;
+	imageID++;
+	if(imageID >= gallerygroup[selectedGallery].length)
+	{
+		imageID = 0;
+	}
+	ImageOverlay(selectedGallery,imageID);
+	event.stopImmediatePropagation();
+	return false;
+});
 
 
 function ImageOverlay( gallerID,  itemID){

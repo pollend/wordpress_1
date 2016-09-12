@@ -56,8 +56,8 @@
                 <div v-for="sl in slides">
 
                     <input type="text" size="36" name='home_slides[{{ $index }}][payload]' value="{{ sl.payload }}" />
-                    <input type="button" value="Upload Image" v-on:click="setImage($index)" />
-                    <input type="button" value="remove"  v-on:click="removeEntry($index)"/>
+                    <input type="button" class="button button-primary" value="Upload Image" v-on:click="setImage($index)" />
+                    <input type="button" class="button button-primary" value="remove"  v-on:click="removeEntry($index)"/>
 
                     </br>Link: 
                     <input type="text" size="36" name='home_slides[{{ $index }}][link]' value="{{ sl.link }}" />                    
@@ -65,7 +65,7 @@
                     </br>Blurb: 
                     <input type="text" size="36" name='home_slides[{{ $index }}][blurb]' value="{{ sl.blurb }}" />
                 </div>
-                <div><a v-on:click="addEntry()" href="#">add Slide</a></div>
+                <div><a v-on:click="addEntry()" style="margin-top:10px;" class="button button-primary" href="#">add Slide</a></div>
             </div>
              
 
