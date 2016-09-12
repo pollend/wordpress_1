@@ -4550,6 +4550,8 @@ list-style: none;
   #searchForm .button, #searchForm .comment-form .form-submit .submit, .comment-form .form-submit #searchForm .submit {
     padding-top: .8em;
     padding-bottom: .8em; }
+  #searchForm li {
+    width: 100%; }
 
 .archive-title {
   padding: .6em;
@@ -4558,37 +4560,28 @@ list-style: none;
 .post.sticky .featured {
   display: block !important; }
 
-.post.sticky .main-container {
+.post.sticky .main-post-body {
   padding-top: 2.3em; }
 
-.post, .type-page, .type-attachment {
-  background: #ececec;
-  margin-top: .7em;
-  margin-bottom: 1em;
-  border-bottom-style: solid;
-  border-width: 1px;
-  margin-bottom: 1em;
-  padding-bottom: 1em;
-  border-color: #d0d0d0;
-  box-shadow: 1px 1px #b5b5b5;
-  position: relative; }
-  .post .post-head-image, .type-page .post-head-image, .type-attachment .post-head-image {
+.main-post-body {
+  padding: 1em; }
+  .main-post-body > .row {
+    margin: 0em 0em; }
+  .main-post-body .post-head-image {
     width: 100%;
     height: auto; }
-  .post .main-container, .type-page .main-container, .type-attachment .main-container {
-    padding: 1em; }
-    .post .main-container .featured, .type-page .main-container .featured, .type-attachment .main-container .featured {
-      position: absolute;
-      top: 0px;
-      left: 1em;
-      padding: .4em;
-      color: white;
-      background: #383838;
-      display: none; }
-  .post .title, .type-page .title, .type-attachment .title {
+  .main-post-body .featured {
+    position: absolute;
+    top: 0px;
+    left: 1em;
+    padding: .4em;
+    color: white;
+    background: #383838;
+    display: none; }
+  .main-post-body .title {
     font-size: 3em;
     font-family: 'Poiret One', cursive; }
-  .post .meta, .type-page .meta, .type-attachment .meta {
+  .main-post-body .meta {
     border-right-style: solid;
     border-width: 1px;
     text-align: center;
@@ -4600,21 +4593,30 @@ list-style: none;
     margin-top: 1em;
     margin-right: 1em;
     padding-right: 1em; }
-    .post .meta .day, .type-page .meta .day, .type-attachment .meta .day {
+    .main-post-body .meta .day {
       margin: 0px;
       font-size: 5em; }
-  .post .author, .type-page .author, .type-attachment .author {
+  .main-post-body .author {
     font-size: .7em;
     margin-left: .7em;
     margin-top: 1em; }
-  .post .row, .type-page .row, .type-attachment .row {
-    margin: 0; }
-  .post .entry, .type-page .entry, .type-attachment .entry {
+  .main-post-body .entry {
     padding-top: .4em;
     padding-bottom: .4em;
     padding-left: .7em; }
-  .post .postmetadata, .type-page .postmetadata, .type-attachment .postmetadata {
+  .main-post-body .postmetadata {
     padding-left: 1em; }
+
+.post, .type-page, .type-attachment, .post-box {
+  background: #ececec;
+  margin-top: .7em;
+  margin-bottom: 1em;
+  border-bottom-style: solid;
+  border-width: 1px;
+  padding-bottom: 1em;
+  border-color: #d0d0d0;
+  box-shadow: 1px 1px #b5b5b5;
+  position: relative; }
 
 .wp-caption {
   max-width: 100% !important; }
@@ -4772,6 +4774,20 @@ list-style: none;
 .game-static-slide {
   height: 400px;
   overflow: hidden; }
+
+.error-404 {
+  text-align: center; }
+  .error-404 .title {
+    font-size: 10rem;
+    font-weight: bolder; }
+  .error-404 .sub-title {
+    font-size: 1.5rem; }
+  .error-404 .error-message {
+    text-align: center; }
+  .error-404 #searchForm ul {
+    width: 30%;
+    margin: 0 auto;
+    min-width: 300px; }
 
 body {
   font-family: 'Arvo', serif; }

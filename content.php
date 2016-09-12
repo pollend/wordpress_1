@@ -19,7 +19,7 @@
         }
     ?>
 
-    <div class="main-container">
+    <div class="main-post-body">
             <?php  get_template_part( 'content', 'header' );?>
 
             <div class="entry">
