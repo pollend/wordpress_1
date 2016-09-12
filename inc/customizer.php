@@ -175,6 +175,12 @@ function theme_foreground_color(){
 			background-color: %4$s !important;
 		}
 
+
+		.sub-menu {
+		    background-color: %1$s !important;
+		}
+
+
 		blockquote, blockquote p {
 		    color: %4$s !important;
 		}
