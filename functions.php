@@ -21,6 +21,9 @@
         wp_enqueue_script('jquery');
         wp_enqueue_script( 'main',  get_template_directory_uri() ."/js/app.min.js",array('jquery','transit','foundation.min'),'1',true);
 
+        // Theme stylesheet.
+        wp_enqueue_style( 'theme-style', get_stylesheet_uri() );
+
          wp_enqueue_script('foundation.min',get_template_directory_uri()."/js/foundation/foundation.min.js",array('jquery'),null,true);
 
     }
@@ -160,5 +163,10 @@ require get_template_directory() . '/inc/custom-pagination.php';
 
 require get_template_directory() . '/inc/theme-customizer-page.php';
 
+
+/**
+ * Customizer additions.
+ */
+require get_template_directory() . '/inc/customizer.php';
 
 ?>
