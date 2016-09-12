@@ -7,7 +7,7 @@ function theme_setup() {
   add_theme_support( 'custom-background' );
 
 }
-add_action( 'init', 'game_post_type', 0 );
+add_action( 'init', 'theme_setup', 0 );
 
 
 
