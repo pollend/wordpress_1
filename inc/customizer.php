@@ -121,15 +121,77 @@ add_action( 'wp_enqueue_scripts', 'theme_body_background_color', 11 );
 
 function theme_foreground_color(){
 	$link_color = get_theme_mod( 'foreground_color', '#ececec' );
+	$rgb = theme_hex2rgb($link_color);
+
+	$primary = rgbToHsl($rgb[0],$rgb[1],$rgb[2]);
+	$primary[2] = $primary[2] + -.1;
+
+	$secondary = rgbToHsl($rgb[0],$rgb[1],$rgb[2]);
+	$secondary[2] = $secondary[2] + -.2;
+
+	
+	$tertiary = rgbToHsl($rgb[0],$rgb[1],$rgb[2]);
+	$tertiary[2] = $tertiary[2] + -.5;
+
 
 	$css = '
 		.post, .type-page, .type-attachment, .post-box{
 			background: %1$s !important;
 		}
+
+		table tbody{
+			 border-color: %2$s !important;	
+		}
+		table tbody tr:nth-child(odd) {
+		    background-color: %3$s !important;
+		    border-color: %2$s !important;
+		}
+
+		table tbody tr:nth-child(even) {
+		    background-color: %2$s !important;
+		    border-color: %2$s !important;
+		}
+
+		table thead{
+			background-color: %2$s !important;
+			border-color: %2$s !important;
+		}
+
+		kbd{
+			background-color: %2$s !important;
+		}
+
+		code{
+			background-color: %2$s !important;
+			border-color: %3$s !important;
+		}
+
+		.featured{
+			background-color: %4$s !important;
+		}
+
+		blockquote, blockquote p {
+		    color: %4$s !important;
+		}
+		blockquote{
+			border-color:%4$s !important;
+		}
+
+		cite{
+			color:%4$s !important;
+		}
+
+
+		
 	';
-	wp_add_inline_style( 'theme-style', sprintf( $css, $link_color ) );
+	wp_add_inline_style( 'theme-style', sprintf( $css,$link_color,
+		rgb2hex(hslToRgb($primary[0],$primary[1],$primary[2])),
+		rgb2hex(hslToRgb($secondary[0],$secondary[1],$secondary[2])),
+		rgb2hex(hslToRgb($tertiary[0],$tertiary[1],$tertiary[2]))));
 }
 add_action( 'wp_enqueue_scripts', 'theme_foreground_color', 11 );
+
+
 
 
 

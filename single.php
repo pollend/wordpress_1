@@ -23,6 +23,7 @@
         <div class="small-3 columns">
             <?php get_sidebar(); ?>
         </div>
+        
     </div>
 
 <?php get_footer(); ?>

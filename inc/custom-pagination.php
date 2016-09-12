@@ -4,6 +4,11 @@ if ( ! function_exists( 'theme_main_paginator' ) ) :
     function theme_main_paginator()
     {
         global $wp_query;
+        $max_pages = $wp_query->max_num_pages;
+        if( $max_pages == 0)        
+            return;
+
+
          $current_page = get_query_var( 'paged' );
         ?>
             <div class="small-12">
@@ -28,7 +33,7 @@ if ( ! function_exists( 'theme_main_paginator' ) ) :
                              <li class="current"><?php echo $i; ?></li>
                            <?php
                         }
-                       else if($i >= 1 && $i < $wp_query->max_num_pages)
+                       else if($i >= 1 && $i <  $max_pages)
                        {
                            ?>
 

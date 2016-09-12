@@ -4648,7 +4648,7 @@ list-style: none;
     color: #5fbfff; }
 
 .footer {
-  padding: .7em; }
+  padding: .7em .7em .7em 1em; }
 
 .overlay-controls {
   z-index: 999993; }

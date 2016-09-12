@@ -57,13 +57,6 @@
 
     <div class="row">
         <div class="top-bar stacked-for-medium header-container">
-        <!-- <div class="top-bar" id="top-header"> -->
-            
-                <?php wp_nav_menu();?>
-            
-          <!-- </div> -->
-          <!-- <div class="top-bar-right">
-            <?php //get_search_form(); ?>
-          </div> -->
+            <?php wp_nav_menu();?>
         </div>
     </div>
