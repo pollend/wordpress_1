@@ -20,6 +20,9 @@ Use it to make something cool, have fun, and share what you've learned with othe
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
+.row {
+  max-width: 63rem !important; }
+
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
    * 1. Set default font family to sans-serif.

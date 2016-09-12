@@ -16,8 +16,9 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 @import './../../node_modules/foundation-sites/scss/foundation';
 @import './../../node_modules/motion-ui/src/motion-ui';
-
-
+.row{
+	max-width:63rem !important;
+}
 
 @include foundation-global-styles;
 @include foundation-grid;
@@ -79,6 +80,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 @import "sidebar";
 @import "carousel";
 @import "not-found-error";
+
 
 body{
 	font-family: 'Arvo', serif;
