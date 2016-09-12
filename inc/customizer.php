@@ -77,6 +77,10 @@ function theme_link_color(){
 		.top-bar ul li>a{
 			color: %1$s !important;
 		}
+
+		.button{
+			background: %1$s !important;
+		}
 	';
 	wp_add_inline_style( 'theme-style', sprintf( $css, $link_color ) );
 }
@@ -110,7 +114,7 @@ function theme_body_background_color(){
 	$link_color = get_theme_mod( 'body_background_color', '#fefefe' );
 
 	$css = '
-		body.customize-support{
+		body.customize-support, body.home{
 			background: %1$s ;
 		}
 	';
@@ -137,6 +141,7 @@ function theme_foreground_color(){
 	$css = '
 		.post, .type-page, .type-attachment, .post-box{
 			background: %1$s !important;
+			box-shadow: 1px 1px %3$s !important;
 		}
 
 		table tbody{
