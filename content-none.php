@@ -2,22 +2,9 @@
 
 <div <?php post_class() ?> id="post-<?php the_ID(); ?>">
 
-    <?php
-        if( has_post_format("image")){
-            $doc = new DOMDocument;
-            $doc->loadHTML($content);
 
-            $image = $doc->getElementsByTagName('img');
-            ?>
-            <img class="post-format-image post-head-image" src="<?php echo $image->item(0)->getAttribute('src');?>">
-            <?php
+    <?php theme_post_thumbnail(); ?>
 
-            $image->item(0)->parentNode->removeChild($image->item(0));
-            
-            $content = $doc->saveHTML();
-
-        }
-    ?>
 
     <div class="main-post-body">
             <?php  get_template_part( 'content', 'header' );?>

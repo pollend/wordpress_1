@@ -39,8 +39,8 @@
                 <div class="image-caption"></div>
 
             </div>
-            <a href="#" id="image-overlay-left"><div class="click-area"></div><div class="button" class="overlay-controls"></div></a>
-            <a href="#" id="image-overlay-right"><div class="click-area"></div><div class="button" class="overlay-controls"></div></a>
+            <a href="#" id="image-overlay-left"><div class="click-area"></div><div  class="overlay-controls"></div></a>
+            <a href="#" id="image-overlay-right"><div class="click-area"></div><div  class="overlay-controls"></div></a>
 
         </div>
     </div>

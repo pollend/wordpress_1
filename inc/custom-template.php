@@ -58,4 +58,37 @@ if ( ! function_exists( 'theme_main_paginator' ) ) :
 
 endif;
 
+
+if ( ! function_exists( 'theme_post_thumbnail' ) ) :
+/**
+ * Displays an optional post thumbnail.
+ *
+ * Wraps the post thumbnail in an anchor element on index views, or a div
+ * element when on single views.
+ *
+ * Create your own twentysixteen_post_thumbnail() function to override in a child theme.
+ *
+ * @since Twenty Sixteen 1.0
+ */
+function theme_post_thumbnail() {
+    if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
+        return;
+    }
+
+    if ( is_singular() ) : ?>
+        <div class="post-thumbnail">
+             <?php the_post_thumbnail( 'post-thumbnail', array( 'alt' => the_title_attribute( 'echo=0' ), "class" => 'post-format-image post-head-image') ); ?>
+        </div><!-- .post-thumbnail -->
+
+    <?php else : ?>
+
+        <a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true">
+            <?php the_post_thumbnail( 'post-thumbnail', array( 'alt' => the_title_attribute( 'echo=0'), "class"=>'post-format-image post-head-image' ) ); ?>
+        </a>
+
+    <?php endif; // End is_singular()
+}
+endif;
+
+
 ?>

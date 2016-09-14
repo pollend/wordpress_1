@@ -3,9 +3,10 @@
 
 // Register Custom Post Type
 function theme_setup() {
-
-  add_theme_support( 'custom-background' );
-
+    //allow custom backgrounds to be set
+    add_theme_support( 'custom-background' );
+    //enable featured image
+    add_theme_support( 'post-thumbnails' );
 }
 add_action( 'init', 'theme_setup', 0 );
 
@@ -26,7 +27,7 @@ function smoke_tree_script_style()
     //add javascript to pages with comment form
     wp_enqueue_script( 'comment-reply' );
 
-    wp_enqueue_style( 'avro', 'https://fonts.googleapis.com/css?family=Arvo|Poiret+One|Unica+One', false );
+    wp_enqueue_style( 'fonts', 'https://fonts.googleapis.com/css?family=Arvo|Poiret+One|Unica+One', false );
     wp_enqueue_script('transit',"http://ricostacruz.com/jquery.transit/jquery.transit.min.js",array('jquery'));
     wp_enqueue_script('jquery');
     wp_enqueue_script( 'main',  get_template_directory_uri() ."/js/app.min.js",array('jquery','transit','foundation.min'),'1',true);
@@ -127,7 +128,7 @@ require get_template_directory() . '/inc/custom-comment-walker.php';
  *
  * @since Twenty Fifteen 1.0
  */
-require get_template_directory() . '/inc/custom-pagination.php';
+require get_template_directory() . '/inc/custom-template.php';
 
 require get_template_directory() . '/inc/theme-customizer-page.php';
 

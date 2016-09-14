@@ -4566,13 +4566,14 @@ list-style: none;
 .post.sticky .main-post-body {
   padding-top: 2.3em; }
 
+.post-head-image {
+  width: 100%;
+  height: auto; }
+
 .main-post-body {
   padding: 1em; }
   .main-post-body > .row {
     margin: 0em 0em; }
-  .main-post-body .post-head-image {
-    width: 100%;
-    height: auto; }
   .main-post-body .featured {
     position: absolute;
     top: 0px;
@@ -4623,6 +4624,9 @@ list-style: none;
 
 .wp-caption {
   max-width: 100% !important; }
+
+.gallery-item {
+  font-size: .9rem; }
 
 .commentlist {
   list-style-type: none; }
@@ -4734,7 +4738,7 @@ list-style: none;
   -webkit-transition: opacity .2s;
   opacity: 0; }
 
-#image-overlay-left .button, #image-overlay-left .comment-form .form-submit .submit, .comment-form .form-submit #image-overlay-left .submit {
+#image-overlay-left {
   position: absolute;
   background: url("images/leftArrowOverlay.png");
   top: 50%;
@@ -4743,7 +4747,7 @@ list-style: none;
   height: 60px;
   margin-top: -30px; }
 
-#image-overlay-right .button, #image-overlay-right .comment-form .form-submit .submit, .comment-form .form-submit #image-overlay-right .submit {
+#image-overlay-right {
   position: absolute;
   background: url("images/rightArrowOverlay.png");
   top: 50%;

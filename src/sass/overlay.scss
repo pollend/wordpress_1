@@ -96,7 +96,7 @@ float: right;
   opacity: 0;
 }
 
-#image-overlay-left .button{
+#image-overlay-left {
 
   position: absolute;
   background: url("images/leftArrowOverlay.png");
@@ -107,7 +107,7 @@ float: right;
   margin-top: -30px;
 }
 
-#image-overlay-right .button{
+#image-overlay-right{
 
   position: absolute;
    background: url("images/rightArrowOverlay.png");

@@ -13,16 +13,19 @@
 	}
 }
 
+
+.post-head-image{
+    width: 100%;
+    height: auto;
+}
+
+
+
 .main-post-body{
     padding: 1em; 
     
     &>.row{
         margin: 0em 0em;
-    }
-
-    .post-head-image{
-        width: 100%;
-        height: auto;
     }
 
     .featured{
@@ -92,4 +95,8 @@
 
 .wp-caption {
     max-width:100% !important;
+}
+
+.gallery-item{
+    font-size: .9rem;
 }
