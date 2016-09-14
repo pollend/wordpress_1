@@ -14,25 +14,33 @@
         wp_enqueue_script('media-upload');
         wp_enqueue_script('thickbox');
         wp_enqueue_style('thickbox');
-        
         wp_enqueue_script( 'vue',  get_template_directory_uri() ."/js/vue/vue.min.js",'1');
 
         register_setting( 'home_slides', 'home_slides','validate_slides');
+        register_setting( 'global_css', 'global_css');
+
 
         add_settings_section('slide_section', 'Slides', 'slide_section', 'slide_settings');
         add_settings_field('slides_field', 'Slides', 'slide_field', 'slide_settings', 'slide_section');
 
+        add_settings_section('css_section', 'Global CSS', 'css_section', 'slide_settings');
+
     }
     add_action('admin_init', 'gray_home_init');
 
+    function css_section(){
+          $options = get_option("global_css");
+        ?>
+           <textarea rows="10" type="text" size="36" name='global_css' style="width:100%;" ><?php echo $options;?></textarea>
+        
+        <?php
+    }
+
+    
 
     function slide_section() {
-    ?>
-
-      <div>Note: images will have to maintain a 2:1 ratio to function properly in the slide show</div>
+        ?>
       <div>Note: A single slide will be viewed without a carousel </div>
-      <div>Note: enable HTML input allows html to be directly placed into each slide</div>
-     
       <?php
     } 
 
@@ -138,6 +146,7 @@ function theme_settings()
         
     <form action="options.php" method="post" >
         <?php settings_fields('home_slides'); ?>
+         <?php settings_fields('global_css'); ?>
         <?php do_settings_sections('slide_settings'); ?>
         <?php submit_button(); ?>
     </form>

@@ -19,6 +19,7 @@
         
         <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
         <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+        <style type="text/css"> <?php echo get_option("global_css"); ?></style>
     </head>
 
 
