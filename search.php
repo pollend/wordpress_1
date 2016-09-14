@@ -1,9 +1,8 @@
 <?php get_header(); ?>
 
-    <div id="contentContainer">
+    <div class="row">
     <?php if (have_posts()) : ?>
-
-        <div id="search-result">Search Results: <?php the_search_query(); ?></div>
+        <div class="archive-title">Search Results: <?php the_search_query(); ?></div>
 
         <?php while (have_posts()) : the_post(); ?>
             
@@ -32,7 +31,6 @@
 
     <?php endif; ?>
     </div>
-    <div id="sidebarContainer">
-    <?php get_sidebar(); ?>
-    </div>
 
+
+<?php get_footer (); ?>

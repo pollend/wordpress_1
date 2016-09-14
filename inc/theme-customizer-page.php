@@ -1,24 +1,24 @@
 <?php
 
     //add the admin options
-    function gray_admin_menu()
+    function edgy_admin_menu()
     {
-        add_theme_page('gray home page', 'Theme Options', 'read', 'home', 'theme_settings');
+        //register theme page
+        add_theme_page('gray home page', 'Theme Options', 'read', 'home', 'edgy_settings');
 
     }
-    add_action('admin_menu','gray_admin_menu');
+    add_action('admin_menu','edgy_admin_menu');
 
 
-    
-    function gray_home_init(){
+    function edgy_home_init(){
         wp_enqueue_script('media-upload');
         wp_enqueue_script('thickbox');
         wp_enqueue_style('thickbox');
         wp_enqueue_script( 'vue',  get_template_directory_uri() ."/js/vue/vue.min.js",'1');
 
+        //register settings
         register_setting( 'home_slides', 'home_slides','validate_slides');
         register_setting( 'global_css', 'global_css');
-
 
         add_settings_section('slide_section', 'Slides', 'slide_section', 'slide_settings');
         add_settings_field('slides_field', 'Slides', 'slide_field', 'slide_settings', 'slide_section');
@@ -26,13 +26,12 @@
         add_settings_section('css_section', 'Global CSS', 'css_section', 'slide_settings');
 
     }
-    add_action('admin_init', 'gray_home_init');
+    add_action('admin_init', 'edgy_home_init');
 
     function css_section(){
           $options = get_option("global_css");
         ?>
            <textarea rows="10" type="text" size="36" name='global_css' style="width:100%;" ><?php echo $options;?></textarea>
-        
         <?php
     }
 
@@ -126,12 +125,11 @@
         if(!is_array($input))
             $input = [];
 
-
         return  $input;
     }
 
 
-function theme_settings()
+function edgy_settings()
 { 
     if (!current_user_can('manage_options'))
     {
