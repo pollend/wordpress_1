@@ -24,7 +24,7 @@
         <ol class="commentlist">
             <?php wp_list_comments(array(
             'avatar_size' => 70,
-            'walker' => new Custom_Comment_Walker()
+            'walker' => new Cr8_Custom_Comment_Walker()
 
             )); ?>
         </ol>

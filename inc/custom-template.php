@@ -1,7 +1,7 @@
 <?php
 
-if ( ! function_exists( 'theme_main_paginator' ) ) :
-    function theme_main_paginator()
+if ( ! function_exists( 'cr8_base_main_paginator' ) ) :
+    function cr8_base_main_paginator()
     {
         global $wp_query;
         $max_pages = $wp_query->max_num_pages;
@@ -59,7 +59,7 @@ if ( ! function_exists( 'theme_main_paginator' ) ) :
 endif;
 
 
-if ( ! function_exists( 'theme_post_thumbnail' ) ) :
+if ( ! function_exists( 'cr8_base_theme_post_thumbnail' ) ) :
 /**
  * Displays an optional post thumbnail.
  *
@@ -70,7 +70,7 @@ if ( ! function_exists( 'theme_post_thumbnail' ) ) :
  *
  * @since Twenty Sixteen 1.0
  */
-function theme_post_thumbnail() {
+function cr8_base_theme_post_thumbnail() {
     if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
         return;
     }

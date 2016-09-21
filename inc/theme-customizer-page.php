@@ -1,34 +1,34 @@
 <?php
 
     //add the admin options
-    function edgy_admin_menu()
+    function cr8_base_admin_menu()
     {
         //register theme page
-        add_theme_page('gray home page', 'Theme Options', 'read', 'home', 'edgy_settings');
+        add_theme_page('gray home page', 'Theme Options', 'read', 'home', 'cr8_base_settings');
 
     }
-    add_action('admin_menu','edgy_admin_menu');
+    add_action('admin_menu','cr8_base_admin_menu');
 
 
-    function edgy_home_init(){
+    function cr8_base_home_init(){
         wp_enqueue_script('media-upload');
         wp_enqueue_script('thickbox');
         wp_enqueue_style('thickbox');
         wp_enqueue_script( 'vue',  get_template_directory_uri() ."/js/vue/vue.min.js",'1');
 
         //register settings
-        register_setting( 'home_slides', 'home_slides','validate_slides');
+        register_setting( 'home_slides', 'home_slides','cr8_base_validate_slides');
         register_setting( 'global_css', 'global_css');
 
-        add_settings_section('slide_section', 'Slides', 'slide_section', 'slide_settings');
-        add_settings_field('slides_field', 'Slides', 'slide_field', 'slide_settings', 'slide_section');
+        add_settings_section('cr8_base_slide_section', 'Slides', 'cr8_base_slide_section', 'slide_settings');
+        add_settings_field('slides_field', 'Slides', 'cr8_base_slide_field', 'slide_settings', 'cr8_base_slide_section');
 
-        add_settings_section('css_section', 'Global CSS', 'css_section', 'slide_settings');
+        add_settings_section('cr8_base_css_section', 'Global CSS', 'cr8_base_css_section', 'slide_settings');
 
     }
-    add_action('admin_init', 'edgy_home_init');
+    add_action('admin_init', 'cr8_base_home_init');
 
-    function css_section(){
+    function cr8_base_css_section(){
           $options = get_option("global_css");
         ?>
            <textarea rows="10" type="text" size="36" name='global_css' style="width:100%;" ><?php echo $options;?></textarea>
@@ -37,13 +37,13 @@
 
     
 
-    function slide_section() {
+    function cr8_base_slide_section() {
         ?>
       <div>Note: A single slide will be viewed without a carousel </div>
       <?php
     } 
 
-    function slide_field() {
+    function cr8_base_slide_field() {
         $options = get_option("home_slides");
         ?> 
 
@@ -121,7 +121,7 @@
 
     }
 
-    function validate_slides($input){
+    function cr8_base_validate_slides($input){
         if(!is_array($input))
             $input = [];
 
@@ -129,7 +129,7 @@
     }
 
 
-function edgy_settings()
+function cr8_base_settings()
 { 
     if (!current_user_can('manage_options'))
     {

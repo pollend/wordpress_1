@@ -1,5 +1,5 @@
 <?php
-class Custom_Comment_Walker extends Walker_Comment {
+class Cr8_Custom_Comment_Walker extends Walker_Comment {
     
     /**
      * What the class handles.

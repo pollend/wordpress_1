@@ -2,7 +2,7 @@
 
 <div <?php post_class() ?> id="post-<?php the_ID(); ?>">
     
-    <?php theme_post_thumbnail(); ?>
+    <?php cr8_base_theme_post_thumbnail(); ?>
 
     <div class="main-post-body">
             <?php  get_template_part( 'content', 'header' );?>

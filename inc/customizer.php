@@ -1,7 +1,7 @@
 <?php 
 
 
-function theme_hex2rgb( $color ) {
+function hex2rgb( $color ) {
     $color = trim( $color, '#' );
 
     if ( strlen( $color ) === 3 ) {
@@ -102,7 +102,7 @@ function hslToRgb( $h, $s, $l ){
 }
 
 
-function theme_customize_register($wp_customize)
+function cr8_base_customize_register($wp_customize)
 {
 	// Add link color setting and control.
 	$wp_customize->add_setting( 'link_color', array(
@@ -156,10 +156,10 @@ function theme_customize_register($wp_customize)
 
 
 }
-add_action( 'customize_register', 'theme_customize_register', 11 );
+add_action( 'customize_register', 'cr8_base_customize_register', 11 );
 
 
-function theme_link_color(){
+function cr8_base_link_color(){
 	$link_color = get_theme_mod( 'link_color', '#2199e8' );
 
 	$css = '
@@ -181,10 +181,10 @@ function theme_link_color(){
 	';
 	wp_add_inline_style( 'theme-style', sprintf( $css, $link_color ) );
 }
-add_action( 'wp_enqueue_scripts', 'theme_link_color', 11 );
+add_action( 'wp_enqueue_scripts', 'cr8_base_link_color', 11 );
 
 
-function theme_secondary_link_color(){
+function cr8_base_secondary_link_color(){
 	$link_color = get_theme_mod( 'secondary_link_color', '#2199e8' );
 
 	$css = '
@@ -203,11 +203,11 @@ function theme_secondary_link_color(){
 	';
 	wp_add_inline_style( 'theme-style', sprintf( $css, $link_color ) );
 }
-add_action( 'wp_enqueue_scripts', 'theme_secondary_link_color', 11 );
+add_action( 'wp_enqueue_scripts', 'cr8_base_secondary_link_color', 11 );
 
 
 
-function theme_body_background_color(){
+function cr8_base_body_background_color(){
 	$link_color = get_theme_mod( 'body_background_color', '#fefefe' );
 
 	$css = '
@@ -217,12 +217,12 @@ function theme_body_background_color(){
 	';
 	wp_add_inline_style( 'theme-style', sprintf( $css, $link_color ) );
 }
-add_action( 'wp_enqueue_scripts', 'theme_body_background_color', 11 );
+add_action( 'wp_enqueue_scripts', 'cr8_base_body_background_color', 11 );
 
 
-function theme_foreground_color(){
+function cr8_base_foreground_color(){
 	$link_color = get_theme_mod( 'foreground_color', '#ececec' );
-	$rgb = theme_hex2rgb($link_color);
+	$rgb = hex2rgb($link_color);
 
 	$primary = rgbToHsl($rgb[0],$rgb[1],$rgb[2]);
 	$primary[2] = $primary[2] + -.1;
@@ -297,13 +297,13 @@ function theme_foreground_color(){
 		rgb2hex(hslToRgb($secondary[0],$secondary[1],$secondary[2])),
 		rgb2hex(hslToRgb($tertiary[0],$tertiary[1],$tertiary[2]))));
 }
-add_action( 'wp_enqueue_scripts', 'theme_foreground_color', 11 );
+add_action( 'wp_enqueue_scripts', 'cr8_base_foreground_color', 11 );
 
 
 
 
 
-function theme_header_color(){
+function cr8_base_header_color(){
 	$link_color = get_theme_mod( 'header_textcolor', '#2199e8' );
 
 	$css = '
@@ -313,7 +313,7 @@ function theme_header_color(){
 	';
 	wp_add_inline_style( 'theme-style', sprintf( $css, $link_color ) );
 }
-add_action( 'wp_enqueue_scripts', 'theme_header_color', 11 );
+add_action( 'wp_enqueue_scripts', 'cr8_base_header_color', 11 );
 
 
 ?>
